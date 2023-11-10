@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>NEED TO FIND YOUR DREAM PHONE? Ask from Intelli PRMS</title>
+        <link rel = "stylesheet" type = "text/css" href = "tutorial4.css">
+    </head>
+    <body>
+        <h2>NEED TO FIND YOUR DREAM PHONE? Ask from Intelli PRMS</h2>
+        <form action = "#" method = "post">
+            <fieldset class="fs1">
+                <legend>Tell us about yourself</legend>
+                <div>
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div>
+                  <label for="age">Age:</label>
+                  <input type="number" id="age" name="age" required>
+                </div>
+                <div>
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="gender">Gender:</label>
+			        <select id="gender" name="gender" required>
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="Occupation">What is your Occupation field?</label>
+                    <input type="text" id="Occupation" name="Occupation" list="search-list">
+                    <datalist id="search-list">
+                        <option value="Engineering">
+                            <option value="Software-Engineer">
+                            <option value="Fashion-Designer">
+                            <option value="Lawyer">
+                            <option value="Teacher">
+                            <option value="Doctor">
+                            <option value="Data-Scientist">
+                            <option value="Accountant">
+                            <option value="Tailor">
+                            <option value="Hair-Dresser">
+                            <option value="Actress/Actor">
+                            <option value="Dentist">
+                        </option>                           
+                    </datalist>
+                </div>
+            </fieldset>
+            <br>
+            <fieldset class="fs2">
+                <legend>Your Preference</legend>
+                <div>
+                    <label for="OS">What is your preferred Operating System?</label>
+                    <input type="text" id="OS" name="OS" list="search">
+                    <datalist id="search">
+                        <option value="Android">
+                            <option value="Linux">
+                            <option value="Ubuntu">
+                            <option value="iOS">
+                            <option value="macOS">
+                       </option>
+                    </datalist>
+                </div>
+                <div>
+                    <label for="Android">What is your preferred Android mobile phone brand?</label>
+                    <input type="text" id="Android" name="Android">
+                </div>
+                <div>
+                    <label for="budget">Select your budget range(0-200000)</label>
+                    <input type="range" id="budget" name="budget" min="0" max="200000">
+                </div>
+                <div class="checkbox-container">
+                    <label for="features">What are the features you are looking when buying a phone</label>
+                    <div class="container">
+                        <input type="checkbox" id="feature1" name="feature1" value="Price">
+                        <label for="feature1">Price</label><br>
+                        <input type="checkbox" id="feature2" name="feature2" value="RAM">
+                        <label for="feature2">RAM</label><br>
+                        <input type="checkbox" id="feature3" name="feature3" value="Internal Space">
+                        <label for="feature3">Camera Quality</label><br>
+                        <input type="checkbox" id="feature4" name="feature4" value="Camera Quality">
+                        <label for="feature4">Internal Space</label><br>
+                        <input type="checkbox" id="feature5" name="feature3" value="Screen Resolution">
+                        <label for="feature5">Screen Resolution</label>
+                    </div>
+                </div>
+                <div>
+                    <label for="Comments">Special Comments</label>
+                    <input type="text" id="comments" name="comments" required>
+                </div>
+                <div style="position: relative;">
+                    <label>
+                        <input type="checkbox"  style="position: absolute; top: 50; left: 550px;" name="rec"> Send the copy of recommendation via email*
+                    </label>
+                    <input type="text" id="rec" name="rec_email" style="padding-left: 20px;" required>
+                </div>
+                <input type="submit" value="Submit">
+                <input type="submit" value="Reset">
+            </fieldset>
+        </form>
+
+
+
+    </body>
+    
+
+</html>

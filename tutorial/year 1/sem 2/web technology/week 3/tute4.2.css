@@ -1,0 +1,30 @@
+#column1 {
+    float: left;
+    width: 46%;
+    margin-left:5px;
+	padding:2%;
+       
+}
+
+#column2 {
+    float: right;
+    width: 46%;
+	padding:2%;
+}
+
+h1 {
+    text-align: center;
+}
+
+h3{
+    text-align:left;
+}
+
+body {
+    border: 2px solid black;
+    height:550px;
+}
+
+p{
+    margin-left:5px;
+}

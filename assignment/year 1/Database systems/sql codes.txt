@@ -1,0 +1,111 @@
+CREATE TABLE Product
+(
+    ProductID INT(4),
+    Name VARCHAR(50) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    Description TEXT NOT NULL,
+    Product_Type VARCHAR(20) NOT NULL,
+    StaffID INT(4),
+    CONSTRAINT p_pid_pk PRIMARY KEY(ProductID), #ensures each product has a unique productID
+    CONSTRAINT f_sid_fk FOREIGN KEY(StaffID) REFERENCES employee(StaffID) #value in this column must match the value of StaffID in employee table
+);
+
+CREATE TABLE Employee
+(
+    StaffID INT(4),
+    Firstname VARCHAR(50) NOT NULL,
+    Surname VARCHAR(50) NOT NULL,
+    ContactNumber VARCHAR(10) NOT NULL,
+    Salary FLOAT(20) NOT NULL,
+    E_City VARCHAR(20) NOT NULL,
+    E_Street VARCHAR(20) NOT NULL,
+    DOB DATE NOT NULL,
+    Date_hired DATE NOT NULL,
+    CONSTRAINT e_pid_pk PRIMARY KEY (StaffID) #ensures each employee has a unique StaffID
+);
+
+CREATE TABLE ordert
+(
+    ordertID INT(4),
+    Date_Time VARCHAR(20) NOT NULL,
+    C_City VARCHAR(20) NOT NULL,
+    C_Street VARCHAR(20) NOT NULL,
+    Quantity INT(5),
+    StaffID INT(4),
+    CustomerID INT(4),
+    CONSTRAINT ordert_ordertID_pk PRIMARY KEY (ordertID), #ensures each order has a unique orderID
+    CONSTRAINT ordert_StaffID_fk FOREIGN KEY (StaffID) REFERENCES employee (StaffID), #value in this column must match the value of StaffID in employee table
+    CONSTRAINT ordert_CustomerID_fk FOREIGN KEY (CustomerID) REFERENCES customer (CustomerID) #value in this column must match the value of CustomerID in customer table
+);
+
+CREATE TABLE Customer
+(
+    CustomerID INT(4),
+    Firstname VARCHAR(50) NOT NULL,
+    Surname VARCHAR(50) NOT NULL,
+    Email_Address VARCHAR(30) NOT NULL,
+    ContactNumber VARCHAR(10) NOT NULL,
+    CONSTRAINT p_cid_pk PRIMARY KEY (CustomerID) #ensures each customer has a unique customerID
+); 
+
+CREATE TABLE Manager
+(
+    StaffID INT(4),
+    Allowance INT(10) NOT NULL,
+    CONSTRAINT p_mid_pk PRIMARY KEY (StaffID), #ensures that manager has a unique staffID
+    CONSTRAINT s_mid_fk FOREIGN KEY (StaffID) REFERENCES employee (StaffID) #value in this column must match the value of StaffID in Staff table
+);
+
+CREATE TABLE DeliveryStaff
+(
+    StaffID INT(4),
+    Drivers_license VARCHAR(9) NOT NULL,
+    CONSTRAINT p_mid_pk PRIMARY KEY (StaffID), #ensure that deliverystaff member has a unique staffID
+    CONSTRAINT t_mid_fk FOREIGN KEY (StaffID) REFERENCES employee (StaffID) #value in this column must match the value of StaffID in Staff table
+);
+
+CREATE TABLE Steward
+(
+    StaffID INT(4),
+    level_of_customer_service_skills VARCHAR(10) NOT NULL,
+    CONSTRAINT d_did_pk PRIMARY KEY (StaffID), #ensure that steward has a unique staffID
+    CONSTRAINT l_mid_fk FOREIGN KEY (StaffID) REFERENCES employee (StaffID) #value in this column must match the value of StaffID in Staff table
+);
+
+
+CREATE TABLE Product_carry
+(
+    ProductID INT(4),
+    ordertID INT(4),
+    CONSTRAINT po_pk PRIMARY KEY (ProductID,ordertID) #this constraint contains of a prime attribute where it uniquely identify product and order
+);
+
+CREATE TABLE Payment
+(
+    PaymentID INT(6),
+    CustomerID INT(4),
+    Amount DECIMAL(10 ,2),
+    PaymentDate DATE,
+    CONSTRAINT pa_pk PRIMARY KEY (PaymentID), #ensures each payment have unique paymentID
+    CONSTRAINT cu_fk FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID) #value in this column must match the value of CustomerID in customer table
+);
+    
+CREATE TABLE Online
+(
+    PaymentID INT(6),
+    Amount DECIMAL(10, 2),
+    PaymentDate DATE,
+    Bank_Account_details VARCHAR(20),
+    CONSTRAINT on_pk PRIMARY KEY (PaymentID) #ensure each online payment have a unique paymentID
+);
+
+
+CREATE TABLE Cash_on_Delivery
+(
+    PaymentID INT(6),
+    Amount DECIMAL(10, 2) NOT NULL,
+    Receipt VARCHAR(10),
+    PaymentDate DATE,
+    CONSTRAINT co_pk PRIMARY KEY (PaymentID) #ensure each online payment cash on delivery have a unique paymentID
+);
+    

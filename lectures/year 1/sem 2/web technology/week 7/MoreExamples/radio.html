@@ -1,0 +1,35 @@
+<!doctype html>
+	<html>
+		<head>
+			<title>Lecture 8 Example</title>
+			
+			<script>
+				function getRadioValue( radioArray ) {
+				   var i;
+				   for ( i = 0; i < radioArray.length; i++ ) {
+					  if ( radioArray[ i ].checked ) { 
+						 return radioArray[ i ].value;
+					  }
+				   }
+				   return "";
+				}
+					
+				function show(frmref){
+				
+					var x = getRadioValue(frmref.r);
+					alert(x);
+					
+				}
+				
+
+			</script>
+		</head>
+		<body>
+		
+				<form name="test">
+				<input type="radio" name="r" value="y">Option1
+				<input type="radio" name="r" value="z">Option2
+				<input type="button" value="Click" onclick="show(this.form);"/>
+		</body>
+		
+	</html>

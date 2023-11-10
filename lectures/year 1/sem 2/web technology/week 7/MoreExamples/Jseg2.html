@@ -1,0 +1,26 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>JS with forms</title>
+		    <script>
+				function showAndClearField(form) {
+				   if ( form.firstName.value =="" ) {
+					  alert( "Hey you did not enter anything" );
+					 
+				   } else {
+					  alert( "This is field contains the text: "+ form.firstName.value );
+					  form.firstName.value=""
+				   }
+    }
+    </script>
+		
+  </head>
+	<body>
+		<p> Enter your first name: 
+			<form>
+			<input type="text" name="firstName" />
+			<input type="button" onclick="showAndClearField(this.form);" value="Show and Clear input"/> 
+			</form>
+	</body>
+</html>

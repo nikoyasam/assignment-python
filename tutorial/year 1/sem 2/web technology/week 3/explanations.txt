@@ -1,0 +1,17 @@
+13.a)The <nav> element is used to specify a navigation bar on a web page. It provides a way to group together 
+     links to important pages or sections of the website, making it easier for users to <navigate class="
+
+
+13.b)The # in the href attribute is a fragment identifier, used to indicate that the link is to an internal location on the same page, 
+     rather than a different page. In this case, the #home refers to an element with an id attribute of "home", and clicking the "Home" link 
+     in the navigation bar will take the user to that element on the page.
+
+
+17)a)li a selector will match all the a elements that are contained within the li elements in the navigation bar. 
+     This allows you to apply specific styles to the a elements within the li elements, which in turn makes it easier to style 
+     the navigation bar.
+
+   b)Yes, the descendant selector nav a would select all the a elements that are descendants of the nav element.
+
+   c)The selector "a" will select all the "a" elements in the HTML document, regardless of where they are located in the document tree. 
+     So if you use only "a", all the hyperlinks in the document will be selected.

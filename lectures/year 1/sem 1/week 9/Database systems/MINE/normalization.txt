@@ -1,0 +1,48 @@
+// Before Normalization
+
+Product(Product ID,Name,Price,Description, Category)
+Employee(Staff ID,FirstName,Surname, Email Address, Contact Number, DOB,City,Street,Date Hired,Pay,Experience,Allowance, Drivers license, Staff ID, Employee Type(eg: Steward/Manager...))
+Customer(Customer ID(PK),Firstname,surname,City,Street,Email Address)
+Order(Order ID(PK), Order Items, Date/time received,Customer ID(FK), Steward ID(FK), Delivery_Staff_ID(FK))
+Payments (Payment ID(PK), Payment Method, Payment Date)
+Customer_contact_details(Contact ID,email address,delivery address,Order ID(FK),Delivery date/time)
+
+
+
+// After Normalization
+
+Category(Category ID(PK),Category name)
+Product(Product ID,Name,Price,Description,Category ID(FK))
+Employee(Staff ID(PK),FirstName,Surname, Email Address, Contact Number, DOB, City, Street,Date Hired, Pay, Experience, Allowance, Manager ID(FK))
+    Delivery_Staff(Delivery_Staff_ID(PK), Staff ID(PK,FK),Drivers license)
+    Steward(Steward ID(PK), Staff ID(FK),)
+    Manager(Manager ID(PK), Staff ID(FK),)
+Customer(Customer ID(PK),Firstname,surname,City,Street,Email Address)
+Order(Order ID(PK),Date/time received,Customer ID(FK), Steward ID(FK), Delivery Staff ID(FK))
+Order_Items(Order_Item ID(PK),Product ID(FK),Quantity)
+
+Payments (Payment ID(PK), Payment Method ID(FK), Payment Date)
+Payment Methods (Payment Method ID(PK), Payment Method)
+
+Customer_contact_details(Contact ID,email address,delivery address,Order ID(FK),Delivery date/time)
+
+Assumption
+1. Customer pays in full for each order (Payment amount = Order amount)
+
+Example 1NF
+Before
+Order(ORderID, Order Items)
+Eg: 1, "3 Lattes, 1 Espresso" <-- Repeating group
+|
+After 
+Order(OrderID)-------------------Order Items(OrderID(FK), Name, Quantity)
+Eg: 1				1, Lattes, 3
+				1, Espresso, 1
+Easy to search
+Select * From OrderItems. Where Name = "Latte"
+
+
+Example 2NF
+Before		-> After
+Products	-> Products, Categories
+Payments	-> Payments, Payment Methods

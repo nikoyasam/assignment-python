@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Maths Game</title>
+	<style>
+		.correct {
+			color: green;
+			font-weight: bold;
+		}
+
+		.incorrect {
+			color: red;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		// Function to generate a random number between min and max (inclusive)
+		function generateRandomNumber(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+		// Function to generate a random operator
+		function generateRandomOperator() {
+			const operators = ['+', '-', '*'];
+			const randomIndex = generateRandomNumber(0, operators.length - 1);
+			return operators[randomIndex];
+		}
+
+		// Function to generate a random math question
+		function generateRandomMathQuestion() {
+			const num1 = generateRandomNumber(1, 10);
+			const num2 = generateRandomNumber(1, 10);
+			const operator = generateRandomOperator();
+
+			let question;
+			let answer;
+
+			switch (operator) {
+				case '+':
+					question = `${num1} + ${num2} = `;
+					answer = num1 + num2;
+					break;
+				case '-':
+					question = `${num1} - ${num2} = `;
+					answer = num1 - num2;
+					break;
+				case '*':
+					question = `${num1} * ${num2} = `;
+					answer = num1 * num2;
+					break;
+			}
+
+			return {question, answer};
+		}
+
+		// Array to hold the questions and answers
+		const questions = [];
+
+		// Generate 5 random math questions
+		for (let i = 0; i < 5; i++) {
+			const mathQuestion = generateRandomMathQuestion();
+			questions.push(mathQuestion);
+		}
+
+		// Function to check the user's answer and display the result
+		function checkAnswer(questionIndex) {
+			const userAnswer = prompt(questions[questionIndex].question);
+			const correctAnswer = questions[questionIndex].answer;
+
+			if (userAnswer == correctAnswer) {
+				document.write(`<p class='correct'>Your answer to question ${questionIndex + 1} is correct</p>`);
+			} else {
+				document.write(`<p class='incorrect'>Your answer to question ${questionIndex + 1} is incorrect. The correct answer is ${correctAnswer}</p>`);
+			}
+		}
+
+		// Check the user's answer for each question and display the result
+		for (let i = 0; i < questions.length; i++) {
+			checkAnswer(i);
+		}
+	</script>
+</body>
+</html>

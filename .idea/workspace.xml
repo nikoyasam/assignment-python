@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="80f87369-967a-4827-961b-bfcd0d3233f6" name="Changes" comment="okayy commit">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/Computational mathematics/.Rhistory" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/Computational mathematics/myhistogram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/Database systems/CM1603 - Coursework - to be ratified by RGU.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/Database systems/Database_cw Runisi_ 20221247.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/Database systems/ERD REPORT FINAL 2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/Database systems/WhatsApp Image 2022-12-20 at 10.12.29.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/Database systems/sql insert.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/Database systems/sql queries final.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/2237028_Task1/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/2237028_Task1/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/2237028_Task1/Question1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/2237028_Task1/out/production/Question1/CapitalGainCalculator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/2237028_Task2A/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/2237028_Task2A/out/production/task 22222bbb/Card.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/2237028_Task2A/src/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/2237028_Task2B/dictionary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/2237028_Task2B/out/production/untitled5/SpellChecker$Node.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/2237028_Task2B/untitled5.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/2237028_final submission.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/2237028_final submission/2237028_Task2B.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/CM1602.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/Functioning of the Code .txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/Question 1 explanation.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/Question 2/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/Question 2/out/production/Question 2/Card.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/Question 2/out/production/Question 2/Player.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/Question 2/src/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/Question 2/src/CardGameSimulator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/Question 2/src/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/TASK3/TASK3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/Task2_b/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/Task2_b/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/Task2b/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/dsa viva.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/data structures and algorithms/functioning.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/english communication skills/Teaching Schedule_CM1607 Sept 2022.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/programming fundamentals/CarRaceManagementSystem-master.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/programming fundamentals/assignment python/Driver_details" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/programming fundamentals/race2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/web technology/CM1605 CourseworkSpecification.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/web technology/Page2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/web technology/form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/web technology/report2.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/web technology/signform.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/web technology/smaple/cww.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/web technology/smaple/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 1/web technology/~$report.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/AI/CM2602 AI - CourseWork - Pending Moderation.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/AI/ai 1.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/AI/mazeCW/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/Literature review - group 22.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/Literature_Review.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/Requirement Specification Template Form (1).docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/dataset.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/final Literature review - group 22.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/final report  - group 22.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/gantt chart.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/goals.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/research papers for chatbot/E_-Xpert_Bot_-Guidance_and_Pest_Detection_for_Smart_Agriculture_using_AI.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/research papers/AnImageRecognitionSystemforCropDiseaseIdentificationofPaddyfieldsinSriLanka.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/research papers/Literature_Review.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/research papers/me/1-s2.0-S0168169917311742-main.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/research papers/me/Different_Plant_Disease_Detection_and_Pe.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/research papers/seth/s13007-021-00722-9.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/srs.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/use case diagram for srs.vpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/use case diagram for srs.vpp.bak_000f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/use case diagram for srs.vpp.bak_003d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/~WRL0005.tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/dsgp/~WRL0512.tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/maths/.ipynb_checkpoints/Untitled1-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/maths/explanations.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/maths/untitled.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/object oriented development/Assessment Brief COURSEWORK CM2601.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/object oriented development/IMG_1294.heic" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/object oriented development/activity diagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/object oriented development/code explanations.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/object oriented development/mark attendance.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/object oriented development/scheduleEvents.vpp.bak_000f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assignment/year 2/object oriented development/scheduleEvents.vpp.bak_002d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 1/Computational mathematics/CM 1606.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 1/Computational mathematics/Lecture 1.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 1/computer systems fundamentals/Lecture01_Number_Systems .pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 11/Database systems/Lecture 10.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 2/computer systems fundamentals/Week 02 IEEE754.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 3/Computer system fundamentals/U0B80.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 4/Computer system fundamentals/Disk Sector 0 MBR.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 4/Database systems/Week 4 - Lecture 4.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 4/english communication skills/lecture 4 handout 2.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 4/programming fundamentals design/Case Study.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 4/programming fundamentals design/Case_Study_2__GROUP_14.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 5/english communication skills/Lecture 5 without videos.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 5/english communication skills/lecture 5 handout 2.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 5/programming fundamentals design/ex3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 5/programming fundamentals design/excersise 1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 5/programming fundamentals design/excersise 2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 5/programming fundamentals/Lec5_Loops 2.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 6/Computer system fundamentals/IP Addressing RGU CSF.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 6/english communication skills/Tutorial 5 no videos.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 7/Computer system fundamentals/Partition Boot Sector.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 7/programming fundamentals design/Case Study 4_Group 17.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 7/programming fundamentals/Lec7_Exception Handling.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 8/Computational mathematics/Lecture 8.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 8/programming fundamentals/Lec8_Strings.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 9/Computational mathematics/volume of a parallelpiped.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 9/Database systems/MINE/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 1/week 9/Database systems/MINE/normalization.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/computational mathematics/week 1/R_documentation01.r" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/computational mathematics/week 1/R_documentation02.Rmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/computational mathematics/week 1/R_introduction.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/computational mathematics/week 1/StateData.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/computational mathematics/week 2/.Rhistory" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/computational mathematics/week 2/Lecture2.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/computational mathematics/week 2/StateData.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/computational mathematics/week 4/Lecture 04_Descrete Probability Distributions (Introduction).pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/computational mathematics/week 6/Uniform and Exponential distributions.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/data structures/week 4/Lecture 4.pptx.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/data structures/week 6/Lecture 6 - Part 2.pptx.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/pro fundamentals/week 1/Lec 1_Intro_ps.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/pro fundamentals/week 7/Lec 7_Representing OO Concepts in Java II.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/web technology/week 3/Lecture3.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/web technology/week 6/Lecture6.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/web technology/week 7/EventListnersExamples/formValidatejs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/web technology/week 7/EventListnersExamples/passwordvaljs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/web technology/week 7/EventListnersExamples/radiobuttonval.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/web technology/week 7/EventListnersExamples/simple0.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/web technology/week 7/images/blue.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/web technology/week 7/images/red-triple.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/web technology/week 7/images/white-triple.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 1/sem 2/web technology/week 9/Lecture9.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Advanced Mathematics/Lecture 02.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Advanced Mathematics/Lecture 10.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Advanced Mathematics/Lecture 3.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Advanced Mathematics/Lecture 9.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Artificial Intelligence/notes/lec 3.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Artificial Intelligence/notes/lec 4.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Artificial Intelligence/notes/lec 7.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Artificial Intelligence/notes/lec 8.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Artificial Intelligence/week 1/Lecture_02.pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Artificial Intelligence/week 4/Lecture_04.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Artificial Intelligence/week 6/Lecture_06_A.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Data Science Group Project/week 4/Week04.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Object oriented development/week 2/Use Case Exercises.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Object oriented development/week 2/oop  assignment/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Object oriented development/week 2/oop  assignment/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Object oriented development/week 2/oop  assignment/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Object oriented development/week 2/oop  assignment/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Object oriented development/week 2/oop  assignment/src/main/java/com/example/oopassignment/HelloApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Object oriented development/week 3/OOD Week 3 [Des].pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Object oriented development/week 3/OOP Week 3 [Prog].pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Object oriented development/week 3/lec3/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Object oriented development/week 4/OOP Week 4 [Prog].ppt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Object oriented development/week 5/OOP Week 5 [Prog].pptx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lectures/year 2/sem 1/Object oriented development/week 7/untitled/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 10/Database systems/Week 10 - Tutorial 8.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 10/Database systems/answers 2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 2/Computational mathematics/Tutorial 1.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 2/English communication skills/tutorial 1 handout 1 articles and acd writing.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 3/Computational mathematics/Tutorial 2.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 3/Computational mathematics/Tutorial 3.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 3/Programming fundamentals/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 3/Programming fundamentals/python tute 2 and 3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 3/Programming fundamentals/q1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 3/Programming fundamentals/sample.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 4/Database systems/Tutorial Data Rep HW.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 4/programming fundamentals/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 5/Computational mathematics/Tutorial 5.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 5/english communication skills/tutorial 4 handout 1.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 5/programming fundamentals/sample.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 6/Computational mathematics/Tutorial 6 (2).pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 6/Database systems/Flow charts HW.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 7/Computational mathematics/Tutorial 7.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 7/Database systems/Week 7 - Tutorial 6.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 8/english communication skills/Group 1 (Group- B) Tutorial 8 Handout 1 .pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 8/programming fundamentals/Tutorial 8.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 1/week 9/Database systems/Week 9 - Tutorial 7.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/computational mathematics/week 3/Tutorial_01.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/computational mathematics/week 7/Tutorial 5a.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/computational mathematics/week 8/Tutorial 05c.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 1/excersise 2/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 1/excersise 2/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 1/excersise 2/excersise 2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 1/excersise 2/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 1/excersise/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 1/excersise/excersise.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 3/array/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 4/tute 4/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 5/Queue/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 5/Queue/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 5/Queue/out/production/Queue/Queue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 5/Tutorial 5.docx.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 6/Bubblesort/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 6/Bubblesort/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 6/Bubblesort/Bubblesort.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 6/Tutorial 6 - Part 2.docx.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 6/View Generated eTranscript_files/dataTables.tribal.min.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 6/View Generated eTranscript_files/jquery-ui.js.download" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 6/View Generated eTranscript_files/sits-ui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 6/linear search.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 6/mergesort/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 6/mergesort/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 6/mergesort/out/production/mergesort/Mergesort.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 6/mergesort/src/Mergesort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 7/Trees/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 7/Trees/Trees.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/data structures and algorithms/week 7/Trees/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/BinaryASearchTree/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/BinaryASearchTree/src/BinarySearchTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/Question8/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/Question8/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/SectionCq1/SectionCq1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/SectionCq1/src/Animal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/SectionCq1/src/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/examples_oop/out/production/examples_oop/Test.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/examples_oop/out/production/examples_oop/Test2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/examples_oop/src/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/examples_oop/src/Inventory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/oop concepts/out/production/oop concepts/EmployeeTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/oopex1/oopex1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/overloadedmethods/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/overloadedmethods/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/overloadedmethods/overloadedmethods.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/overloadedmethods/src/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/privatemethods/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/privatemethods/out/production/privatemethods/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/privatemethods/privatemethods.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/privatemethods/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/untitled/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/untitled/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/untitled/out/production/untitled/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/untitled/untitled.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/untitled1/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/untitled1/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 1/2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 1/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 1/Tute 2/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 1/Tute 2/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 1/Tutorial 1/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 1/Tutorial 1/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 1/Tutorial 1/out/production/Tutorial 1/pattern1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 1/Tutorial 1/src/Conversion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 1/bro.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 2/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 2/Output.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 2/Tute2/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 3/Case.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 3/Grade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 3/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 3/New.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 3/Tute 3/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 3/Tutorial 3.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 4/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 4/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 4/Tute 4/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 4/Tute 4/Tute 4.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 7/pro tute6 Q3/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 7/pro tute6 Q3/out/production/pro tute6 Q3/Conversion.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 7/pro_tute6/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 7/pro_tute6/out/production/pro_tute6/Person.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 7/tutorial 6/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 7/tutorial 6/out/production/tutorial 6/Student.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 7/tutorial 6/tutorial 6.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 8/tute8 prp/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 8/tute8 prp/out/production/tute8 prp/Circle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 8/tute8 prp/out/production/tute8 prp/Employee.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 8/tute8 prp/src/Animal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 8/tute8 prp/src/Circle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/pro fundamentals/week 8/tute8 prp/tute8 prp.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 1/me.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 1/tuteeeef.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 2/Tutorial2.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 2/chatgpt (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 2/~$torial2.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 3/tutorial 4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 4/Tutorial4.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 4/tute4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 4/tutorial4.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 4/tutorial4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 7/EventListnersExamples/imagereplacement.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 7/MoreExamples/dropdownvalue.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 7/MoreExamples/radio.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 1/sem 2/web technology/week 7/images/blue-triple.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Advanced Mathematics/Symbolic computation.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Advanced Mathematics/Tutorial 03.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Advanced Mathematics/Tutorial 05.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Artificial Intelligence/Tutorial 4.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Artificial Intelligence/Tutorial 5.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 2/tute1/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 2/tute1/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 2/tute1/src/gui.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 2/tute1/tute1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 2/tutorial new/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 2/tutorial new/out/production/tutorial new/Person.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 2/tutorial new/tutorial new.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 2/tutorial one answers.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 3/demo/tutorial3/tutorial3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 4/tute3/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 4/tute3/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 4/tute3/out/production/tute3/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 4/tute3/src/Date.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 4/tute3/src/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 4/tute3/src/Movie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 5/tute4/src/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 5/tute4/src/CarbonFootPrint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 5/tute4/src/Date.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 5/tute4/src/DeliveryOrder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 5/tute4/src/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 5/tute4/src/PastryShopOrder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 5/tute4/tute4.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 6/tute6/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 6/tute6/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 6/tute6/src/LinkedListTraversalTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial/year 2/sem 1/Object oriented development/week 6/tute6/tute6.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NbSl7oUbx24nRXHxIahDGHiifu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/USER/Downloads/university/assignment/year 1/programming fundamentals/assignment python"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="80f87369-967a-4827-961b-bfcd0d3233f6" name="Changes" comment="" />
+      <created>1679931436256</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679931436256</updated>
+    </task>
+    <task id="LOCAL-00001" summary="okayy commit">
+      <created>1699619018540</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699619018540</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="okayy commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="okayy commit" />
+  </component>
+</project>

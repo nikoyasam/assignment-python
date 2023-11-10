@@ -1,0 +1,167 @@
+TASK 1
+
+public class hello {
+	public static void main(String[] args) {
+	    System.out.println("Hello World");
+            System.out.println("This is easy");
+            System.out.println("Goodbye world!");
+        }
+}
+
+
+TASK 2
+
+public class hello {
+    public static void main(String[] args) {
+
+        System.out.println("Hello! I am Sam. I am \n21 years old");
+
+    }
+}
+
+TASK3
+
+2Much (variable names cannot start with a digit)
+
+*star (variable names cannot contain special characters)
+
+
+TASK 4
+
+public class PrimitiveVariables {
+    public static void main(String[] args) {
+        // int data type
+        int myInt = Integer.MAX_VALUE;
+        System.out.println("Integer Maximum Value: " + myInt);
+        myInt = Integer.MIN_VALUE;
+        System.out.println("Integer Minimum Value: " + myInt);
+        System.out.println("Integer Maximum Value + 1: " + (myInt + 1));
+
+        // byte data type
+        byte myByte = Byte.MAX_VALUE;
+        System.out.println("Byte Maximum Value: " + myByte);
+        myByte = Byte.MIN_VALUE;
+        System.out.println("Byte Minimum Value: " + myByte);
+        System.out.println("Byte Maximum Value + 1: " + (myByte + 1));
+
+        // short data type
+        short myShort = Short.MAX_VALUE;
+        System.out.println("Short Maximum Value: " + myShort);
+        myShort = Short.MIN_VALUE;
+        System.out.println("Short Minimum Value: " + myShort);
+        System.out.println("Short Maximum Value + 1: " + (myShort + 1));
+
+        // long data type
+        long myLong = Long.MAX_VALUE;
+        System.out.println("Long Maximum Value: " + myLong);
+        myLong = Long.MIN_VALUE;
+        System.out.println("Long Minimum Value: " + myLong);
+        System.out.println("Long Maximum Value + 1: " + (myLong + 1));
+
+        // float data type
+        float myFloat = Float.MAX_VALUE;
+        System.out.println("Float Maximum Value: " + myFloat);
+        myFloat = Float.MIN_VALUE;
+        System.out.println("Float Minimum Value: " + myFloat);
+
+        // double data type
+        double myDouble = Double.MAX_VALUE;
+        System.out.println("Double Maximum Value: " + myDouble);
+        myDouble = Double.MIN_VALUE;
+        System.out.println("Double Minimum Value: " + myDouble);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TASK5
+
+import java.util.Scanner;
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter temperature in celsius");
+        double celsius = scanner.nextDouble();
+        double farenheiht = (9.0/5) * celsius + 32;
+        System.out.println(celsius + "°C is equivalent to " + farenheiht + "°F");
+    }
+}
+
+TASK6
+
+public class Main {
+    public static void main(String[] args) {
+        double v1 = 123.456;
+        System.out.printf("%.2f", v1);
+
+
+TASK7
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of manual workers: ");
+        int manualworkers = scanner.nextInt();
+        System.out.print("Enter the number of skilled workers: ");
+        int skilledworkers = scanner.nextInt();
+        System.out.print("Enter the number of management workers: ");
+        int managementworkers = scanner.nextInt();
+
+
+        double manualWage = manualworkers * 500;
+        double skilledWage = skilledworkers * 700;
+        double managementWage = managementworkers * 800;
+        double totalWage = manualWage + skilledWage + managementWage;
+        double taxWage = totalWage * 0.2;
+
+        System.out.println("Total wage bill: £" + totalWage);
+        System.out.println("Approximate tax to pay: £" + taxWage);
+    }
+}
+
+
+
+TASK 8
+
+public class Main {
+    public static void main(String[] args) {
+        double number = 1234567.456;
+        System.out.printf("%,.1f", number);
+    }
+}
+
+
+TASK 9
+
+
+public class Main {
+    public static void main(String[] args) {
+	
+

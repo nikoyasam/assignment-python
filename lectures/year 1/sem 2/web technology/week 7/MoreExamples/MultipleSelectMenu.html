@@ -1,0 +1,41 @@
+<!doctype html>
+	<html>
+		<head>
+			<title>Lecture 8 Example</title>
+			
+			<script>
+			
+			function getMSelectValuesA( selectList ) {
+				   var i;
+				   var values = [];
+				   for ( i = 0; i < selectList.length; i++ ) {
+					  if ( selectList.options[ i ].selected ) {
+						 values[ values.length ] = selectList.options[ i ].value;
+					  }
+				   }
+				   return values;
+				}
+				
+			function show(frmref){
+				
+					var x = getMSelectValuesA(frmref.s);
+					alert(x);
+					console.log(x);
+				}
+	
+				
+			</script>
+		</head>
+		<body>
+		
+				<form name="test">
+				<select name="s" multiple>
+				  <option value="x">the variable x</option>
+				  <option value="y">the variable y</option>
+				</select>
+				<input type="button" value="Click" onclick="show(this.form);"/>
+				</form>
+		</body>
+		
+		
+	</html>

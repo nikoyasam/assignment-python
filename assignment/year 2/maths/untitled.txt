@@ -1,0 +1,24 @@
+1c
+
+def fourier_series(x, N, L, a_coeffs, b_coeffs):
+    result = 0.5 * a_coeffs[0]  # Initialize with a0 / 2
+    for n in range(1, N + 1):
+        result += a_coeffs[n - 1] * np.cos(n * x) + b_coeffs[n - 1] * np.sin(n * x)
+    return result
+
+# Plot the Fourier series expansion for various harmonic terms
+x_values = np.linspace(-2 * np.pi, 2 * np.pi, 1000)
+y_values_1 = [fourier_series(x, 1, L, a_coeffs[:1], b_coeffs[:1]) for x in x_values]
+y_values_5 = [fourier_series(x, 5, L, a_coeffs[:5], b_coeffs[:5]) for x in x_values]
+y_values_150 = [fourier_series(x, 150, L, a_coeffs, b_coeffs) for x in x_values]
+
+plt.figure(figsize=(10, 6))
+plt.plot(x_values, y_values_1, label='1st Harmonic')
+plt.plot(x_values, y_values_5, label='5th Harmonic')
+plt.plot(x_values, y_values_150, label='150th Harmonic')
+plt.title("Fourier Series Expansion")
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.legend()
+plt.grid(True)
+plt.show()

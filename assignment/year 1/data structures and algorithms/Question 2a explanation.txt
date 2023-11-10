@@ -1,0 +1,392 @@
+import java.util.*;
+
+public class Player {
+    String name;
+    PositionalList hand;
+
+    Player(String name) {
+        this.name = name;
+        hand = new PositionalList();
+    }
+
+    void addCard(int rank, char suit) {
+
+        hand.addACard(rank, suit);
+    }
+
+    Card playACard(char suit) {
+        if (hand.size == 0) {
+            throw new IllegalStateException("No cards left in hand");
+        }
+
+
+        PositionalList.SuitIterator iterator = hand.suitIterator(suit);
+        if (iterator.hasNext()) {
+            Card card = iterator.next();
+            hand.removeCard(card);
+            return card;
+        } else {
+            throw new NoSuchElementException("No cards of that suit in hand");
+        }
+    }
+
+    java.util.Iterator<Card> iterator() {
+        return (Iterator<Card>) hand.iterator();
+    }
+
+
+    PositionalList.SuitIterator suitIterator(char suit) {
+        return hand.suitIterator(suit);
+    }
+
+
+    void finalDeal(List<Card> deals, int numCards) {
+        List<Card> allCards = new ArrayList<>();
+        PositionalList.CustomIterator iterator = hand.iterator();
+        while (iterator.hasNext()) {
+            allCards.add(iterator.next());
+        }
+        allCards.addAll(deals);
+        Random random = new Random();
+        for (int i = 0; i < numCards; i++) {
+            if (allCards.size() == 0) {
+                break;
+            }
+            int index = random.nextInt(allCards.size());
+            Card card = allCards.remove(index);
+            addCard(card.getRank(), card.getSuit());
+        }
+    }
+
+
+    void sortHand() {
+        PositionalList sortedHand = new PositionalList();
+        for (char suit : new char[]{'C', 'D', 'H', 'S'}) {
+            for (int rank = 2; rank <= 14; rank++) {
+                PositionalList.SuitIterator iterator = hand.suitIterator(suit);
+                while (iterator.hasNext()) {
+                    Card card = iterator.next();
+                    if (card.rank == rank) {
+                        sortedHand.addACard(rank, suit);
+                        hand.removeCard(card);
+                    }
+                }
+            }
+        }
+        hand = sortedHand;
+    }
+
+    @Override
+    public String toString() {
+        return name + ": " + hand.toString();
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+EXPLANATION OF THE PLAYER CLASS
+--------------------------------
+
+The Player class is a Java class that represents a player in a card game. The player's hand is represented using a PositionalList, which is a custom data 
+structure that represents a sequence of cards. The goal of the application is to support a person arranging a group of cards in hand so that cards of the 
+same suit are kept together. The hand is sorted by suit and then by rank. The class includes methods to add a card to the hand, play a card from the hand, 
+return an iterator for all cards currently in the hand, and return an iterator for all cards of a specific suit that are currently in the hand.
+
+The addCard() method takes an integer representing the rank of the card and a character representing the suit of the card, and adds a new card with the 
+given rank and suit to the hand.
+
+The playACard() method takes a character representing the suit of the card to be played. If there is a card of the specified suit in the hand, that card is
+ removed from the hand and returned. If there is no card of the specified suit in the hand, an arbitrary card is removed from the hand and returned.
+
+The iterator() method returns an iterator for all cards currently in the hand.
+
+The suitIterator() method takes a character representing the suit of the cards to iterate over, and returns an iterator for all cards of that suit that are 
+currently in the hand.
+
+The finalDeal() method takes a list of Card objects representing the cards that have been dealt so far, and the number of cards that should be dealt to the 
+player. It adds the dealt cards to a list of all cards and then randomly selects the specified number of cards from the combined list to add to the player's hand.
+
+The sortHand() method sorts the player's hand by suit and then by rank. It does this by creating a new PositionalList called "sortedHand" and iterating 
+over each suit and rank in turn, adding each card that matches the current suit and rank to the sorted hand and removing it from the original hand.
+
+The toString() method returns a string representation of the player's name and their current hand of cards.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+public class Node {
+    Card card;
+    Node next;
+    Node prev;
+
+    Node(Card card, Node prev, Node next) {
+        this.card = card;
+        this.prev = prev;
+        this.next = next;
+    }
+}
+
+This block of code defines a class called Node which has three member variables card, next, and prev.
+card is of type Card, and next and prev are of type Node.
+The constructor takes in three parameters, a Card, a Node that represents the previous node, and a Node that represents the next node. 
+t initializes the member variables with the given values.
+
+import java.util.NoSuchElementException;
+
+
+public class PositionalList {
+    Node header;
+    Node trailer;
+    int size;
+
+    PositionalList() {
+        header = new Node(null, null, null);
+        trailer = new Node(null, header, null);
+        header.next = trailer;
+        size = 0;
+    }
+
+This block of code defines a class called PositionalList.
+It imports the NoSuchElementException class from java.util package.
+It declares three member variables, header, trailer, and size.
+header and trailer are of type Node, and size is of type int.
+The constructor initializes header and trailer as Node objects and sets size to 0.
+The header and trailer nodes are initialized to point to each other, creating a circular list with no elements.
+
+    // Adds a new card with rank r and suit s to the hand
+    void addACard(int rank, char suit) {
+        Card card = new Card(rank, suit);
+        Node node = new Node(card, trailer.prev, trailer);
+        trailer.prev.next = node;
+        trailer.prev = node;
+        size++;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    // CustomIterator class
+    class CustomIterator {
+        Node current;
+
+        CustomIterator(Node start) {
+            current = start;
+        }
+
+        boolean hasNext() {
+            return current != trailer;
+        }
+
+        Card next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException("No more elements in the iterator");
+            }
+            Card card = current.card;
+            current = current.next;
+            return card;
+        }
+    }
+
+    // SuitIterator class
+    class SuitIterator {
+        Node current;
+        char suit;
+
+
+        SuitIterator(Node start, char suit) {
+            this.suit = suit;
+            current = start;
+            while (current != trailer && current.card.suit != suit) {
+                current = current.next;
+            }
+        }
+
+        boolean hasNext() {
+            return current != trailer;
+        }
+
+        Card next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException("No more elements in the iterator");
+            }
+            Card card = current.card;
+            current = current.next;
+            while (current != trailer && current.card.suit != suit) {
+                current = current.next;
+            }
+            return card;
+        }
+    }
+
+    CustomIterator iterator() {
+        return new CustomIterator(header.next);
+    }
+
+    SuitIterator suitIterator(char suit) {
+        return new SuitIterator(header.next, suit);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        Node current = header.next;
+        while (current != trailer) {
+            sb.append(current.card.toString());
+            if (current.next != trailer) {
+                sb.append(", ");
+            }
+            current = current.next;
+        }
+        return sb.toString();
+    }
+
+
+
+
+    void removeCard(Card card) {
+        Node current = header.next;
+        while (current != trailer) {
+            if (current.card.equals(card)) {
+                Node prevNode = current.prev;
+                Node nextNode = current.next;
+                prevNode.next = nextNode;
+                nextNode.prev = prevNode;
+                size--;
+                break;
+            }
+            current = current.next;
+        }
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+This code implements a positional list for a card game where cards of the same suit should be kept together. The list consists of nodes, and each 
+node contains a Card object, a reference to the previous node, and a reference to the next node. The Card object contains a rank and a suit.
+
+The addACard method takes a rank and a suit and creates a new Card object with those values. It then creates a new node with the Card object as its data
+ and adds the node to the end of the list (before the trailer node).
+
+The CustomIterator class is an iterator for all cards currently in the hand. It contains a reference to the current node and has two methods: hasNext() and 
+next(). The hasNext() method returns true if there are more cards in the list, and the next() method returns the next Card object in the list.
+
+The SuitIterator class is an iterator for all cards of a given suit that are currently in the hand. It contains a reference to the current node and a suit 
+value. It also has the hasNext() and next() methods. The next() method returns the next Card object in the list that has the same suit as the one passed to the constructor. If there are no more cards of that suit in the list, the iterator stops.
+
+The iterator() method returns a CustomIterator object that starts at the first card in the list (after the header node).
+
+The suitIterator(char suit) method returns a SuitIterator object that starts at the first card in the list with the given suit.
+
+The removeCard(Card card) method removes the given card from the list. It iterates through the list until it finds a node with a Card object that equals 
+the given card. It then removes the node from the list by updating the previous and next nodes to point to each other, effectively removing the current 
+node from the list.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The given code defines a class called PositionalList, which represents a hand of cards that can be manipulated using a positional list. The class has the 
+following instance variables:
+
+header: A Node object representing the head of the list.
+trailer: A Node object representing the tail of the list.
+size: An integer representing the size of the list.
+The PositionalList class has a constructor that initializes the header and trailer nodes and sets the size to zero. The header and trailer nodes are 
+linked to each other to form an empty list.
+
+The class also has the following methods:
+
+addACard(int rank, char suit): Adds a new card with rank rank and suit suit to the hand represented by the PositionalList. The method creates a new Card 
+object using the given rank and suit, and then creates a new Node object with the Card object, the node before the trailer, and the trailer node as its previous, current, and next nodes, respectively. The Node is inserted between the node before the trailer and the trailer node by updating the next and prev pointers of the adjacent nodes.
+size(): Returns the size of the PositionalList.
+iterator(): Returns a CustomIterator object that can be used to iterate over all cards currently in the hand.
+suitIterator(char suit): Returns a SuitIterator object that can be used to iterate over all cards of suit suit that are currently in the hand.
+removeCard(Card card): Removes the given Card object from the PositionalList.
+The PositionalList class also has two nested classes: CustomIterator and SuitIterator.
+
+CustomIterator is an iterator class that can be used to iterate over all cards in the hand. It has the following instance variables:
+current: A Node object representing the current position of the iterator.
+The CustomIterator constructor takes a Node object representing the starting position of the iterator. The hasNext() method returns true if there are more 
+elements to iterate over, and false otherwise. The next() method returns the next Card object in the iteration.
+SuitIterator is an iterator class that can be used to iterate over all cards of a given suit that are currently in the hand. It has the following instance 
+variables:
+current: A Node object representing the current position of the iterator.
+suit: A char representing the suit of cards to iterate over.
+The SuitIterator constructor takes a Node object representing the starting position of the iterator, and a char representing the suit of cards to iterate
+over. The constructor initializes the current position to the first node in the list that has the given suit. The hasNext() method returns true if there 
+are more elements to iterate over, and false otherwise. The next() method returns the next Card object in the iteration. If there are no more cards of the 
+
+given suit, the method returns the next card in the list regardless of its suit.
+Finally, the PositionalList class overrides the toString() method to provide a string representation of the hand. It iterates over all the cards in the 
+hand and adds their string representation to a StringBuilder object, separating them by commas.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+public class Card {
+    int rank;
+
+
+    char suit;
+
+    Card(int rank, char suit) {
+        this.rank = rank;
+        this.suit = suit;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public char getSuit() {
+        return suit;
+    }
+
+    @Override
+    public String toString() {
+        String rankStr;
+        String suitStr;
+        switch (rank) {
+            case 11:
+                rankStr = "Jack";
+                break;
+            case 12:
+                rankStr = "Queen";
+                break;
+            case 13:
+                rankStr = "King";
+                break;
+            case 14:
+                rankStr = "Ace";
+                break;
+            default:
+                rankStr = String.valueOf(rank);
+        }
+        switch (suit) {
+            case 'C':
+                suitStr = "Clubs";
+                break;
+            case 'D':
+                suitStr = "Diamonds";
+                break;
+            case 'H':
+                suitStr = "Hearts";
+                break;
+            case 'S':
+                suitStr = "Spades";
+                break;
+            default:
+                suitStr = "";
+        }
+        return rankStr + "-" + suitStr;
+
+
+    }
+
+}
+
+The provided code defines a class Card that represents a playing card. Each card object has a rank attribute which represents the card's value, and a suit attribute which represents the card's suit. The Card class provides the following methods:
+
+Card(int rank, char suit): Constructor that creates a new Card object with the given rank and suit.
+getRank(): Returns the rank of the card.
+getSuit(): Returns the suit of the card.
+toString(): Returns a string representation of the card in the format "rank-suit". For example, a 2 of clubs would be represented as "2-Clubs".
+This Card class will be used in implementing the card game simulator.

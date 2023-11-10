@@ -1,0 +1,119 @@
+h2{
+    color:rgb(34, 34, 235);
+    text-align:center;
+}
+ label{
+    
+    align-items: center;
+    padding-top: 20px;
+ }
+
+ .checkbox-container {
+    display: flex;
+  }
+  
+  .checkbox-container label,
+  .checkbox-container input[type="checkbox"] {
+    display: inline-block;
+    margin-right: 2px;
+   
+  }
+  
+
+  fieldset div {
+    margin-bottom: 20px;
+  }
+
+  input[type="text"] {
+    width: 50%;
+    height: 30px;
+}
+
+input[type = "number"]{
+    width:50%;
+    height: 30px;
+}
+
+input[type = "email"]{
+    width:50%;
+    height: 30px;
+}
+
+input[type="range"]{
+    width:30%;
+    margin-left:110px;
+}
+
+#gender{
+    width:50.5%;
+    height:40px;
+    margin-left:260px;
+}
+
+  
+fieldset div label {
+    min-width: 80px;
+    margin-right: 200px;
+    display:inline-block;
+  }
+
+
+#Occupation{
+    margin-left: 140px;
+    width:50%;
+
+}
+
+#OS{
+    margin-left:70px;
+    width:50.5%;
+}
+
+
+#email{
+    margin-left: 260px;
+}
+
+#age{
+    margin-left: 260px;
+}
+
+#name{
+    margin-left: 260px;
+}
+
+#Android{
+    width:50.5%;
+}
+
+#comments{
+    margin-left:220.5px;
+    width:50.5%;
+    height:100px;
+}
+
+.container{
+    margin-left:150px;
+    flex-wrap: wrap;
+}
+
+.container input[type="checkbox"] {
+    margin: 5px;
+}
+
+#rec{
+    margin-left:50px;
+    width:49%;
+}
+
+input[type="submit"]{
+    background-color:rgb(49, 188, 14);
+    color:white;
+    width:100px;
+    height:50px;
+    border-radius: 5px;
+    border:none;
+    cursor:pointer;
+}
+ 
+  

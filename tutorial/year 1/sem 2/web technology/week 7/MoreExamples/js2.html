@@ -1,0 +1,68 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>JS 2 </title>
+		<style>
+		
+			
+		</style>
+		
+  </head>
+	<body>
+		<script>
+		
+			//concat
+			let veg =["carrot", "beans", "Potato"]
+			let fruits = ["Apple", "Banana", "Mango"]
+			
+			let newarray =  fruits.concat(veg);
+			
+			console.log(newarray)
+			
+			//Every()
+			
+			function containsFiveLetters(currentValue){
+				return currentValue.length==5;
+			}
+			
+			let fruit1 = ["Apple", "Banana", "Mango"]
+			let fruit2= ["Apple", "Pears", "Grapes"]
+			
+			console.log(fruit1.every(containsFiveLetters))
+			
+			//fill()
+			
+			let colors = ["red", "blue", "orange"]
+			colors.fill("yellow", 2,4)
+			console.log(colors)
+			
+			//filter()
+			
+			let vegetables = ["Carrot", "Radish", "Pumpkin", "Beans"]
+			console.log(vegetables.filter(containsFiveLetters))
+			
+			//find()
+			
+			function containsThreeletters(currentValue){
+				return currentValue.length==3;
+			}
+			
+			let numbers =["one", "two", "three", "four"]
+			console.log(numbers.find(containsThreeletters))
+			
+			
+			//pop ()
+			
+			console.log(numbers.pop())
+			
+			//push
+			
+			numbers.push("five")
+			console.log(numbers)
+			
+		
+		</script>
+
+	</body>
+</html>

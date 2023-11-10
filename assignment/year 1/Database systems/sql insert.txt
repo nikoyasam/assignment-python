@@ -1,0 +1,139 @@
+INSERT INTO
+customer (CustomerID,Firstname,Surname,Email_Address,ContactNumber)
+VALUES
+(1001, 'John', 'Doe', 'peter,doe@gmail.com', '0779847208'),
+(1002, 'Peter', 'Samara', 'peter.sam@gmail.com', '0779205163'),
+(1003, 'Jonas', 'Jensa', 'jonas.jena@gmail.com', '0775462134'),
+(1004, 'Liya', 'Matos', 'liya.matos@gmail.com', '0778956432'),
+(1005, 'Paul', 'Ritch', 'paul.ritch@gmail.com', '0745624153'),
+(1006, 'Neli', 'Adams', 'neli.adams@gmail.com', '0767895432'),
+(1007, 'Bela', 'Jonz', 'bela.jonz@gmail.com', '0774235678'),
+(1008, 'Eshi', 'Dias', 'eshi.dias@gmail.com', '0771266542'),
+(1009, 'Johan', 'Smith', 'johan.smith@gmail.com', '0745567201'),
+(1010, 'Henry', 'Jayden', 'henry.jay@gmail.com', '0779205164');
+
+
+
+INSERT INTO
+Employee (StaffID,Firstname,Surname,ContactNumber,Salary,E_city,E_street,DOB,Date_Hired)
+VALUES
+(101, 'Jona', 'Adams','0772056721', 50000,'Austin', 'Fleet Street', '1980-01-01', '2010-01-01'),
+(102, 'Nancy', 'Kenddy', '0742516324', 50000, 'Boston', 'Park Avenue', '1971-02-05', '2000-09-10'),
+(103, 'Chris', 'Miller', '0778954214', 50000, 'New York', 'Wall street', '1989-10-30', '2019-09-09'),
+(104, 'Eshi', 'Dias', '0775462551', 50000, 'Los Angeles', 'Lovely Road', '1976-11-26', '2021-02-20'),
+(105, 'Dania', 'Kolova', '0762551123', 50000, 'San Antonio', 'Lewis Street', '1980-02-09', '2018-01-07'),
+(106, 'Yann', 'Taylor', '0772241236', 30000, 'Philadelphia', 'Lonely Street', '1975-05-06', '2005-08-02'),
+(107, 'Kurt', 'Thorpe', '0775889621', 30000, 'San Diego', 'Grant Street', '1970-04-07', '2002-11-01'),
+(108, 'Tim' , 'Norm', '0745569881', 30000, 'Houston', 'Abbey Road', '1972-08-09', '2003-09-09'),
+(109, 'Malia', 'Mundi', '0776251254', 30000, 'Chicago', 'Main Street', '1991-01-03', '2019-08-02'),
+(110, 'Marc', 'Daniel', '0776544218', 30000, 'Colombus', 'Dickson Street', '1986-10-15', '2020-07-06'),
+(111, 'Jenna', 'Novski', '0772115540', 120000, 'Tampa', 'Maple Street', '1974-05-02', '2020-08-10'),
+(112, 'Nikolai', 'Mikonov', '0778992546', 120000, 'Oakland','Oak Street', '1976-10-20', '2010-08-11'),
+(113, 'Don', 'Matos', '0775554210', 120000, 'Chandler', 'Pine Street', '1975-10-28', '2008-08-09'),
+(114, 'Jen', 'Probert', '0778551234', 120000, 'Durham', 'Hill Street', '1976-12-05', '2010-02-03'),
+(115, 'Ram', 'Binghi', '0778556932', 120000, 'Pittsburgh', 'Elm Street', '1990-05-05', '2020-08-07');
+
+INSERT INTO
+Steward (StaffID, level_of_customer_service_skills)
+VALUES
+(101, 'high'),
+(102, 'low'),
+(103, 'medium'),
+(104, 'high'),
+(105, 'medium');
+
+
+INSERT INTO
+Manager (StaffID, Allowance)
+VALUES
+(111, 50000),
+(112, 25000),
+(113, 30000),
+(114, 50000),
+(115, 60000);
+
+
+INSERT INTO
+DeliveryStaff (StaffID, Drivers_license)
+VALUES
+(106, 'ABC125480'),
+(107, 'GHY146580'),
+(108, 'FHG178479'),
+(109, 'RTY156890'),
+(110, 'UYW167842');
+
+INSERT INTO
+Product (ProductID,Name,Price,Description,Product_Type,StaffID)
+VALUES
+(001, 'Iced Latte', 6.99, 'Espresso, milk, and ice served in a large cup', 'Cold Beverage', 106),
+(002, 'Chocolate Milkshake', 5.00, 'A creamy chocolate milkshake topped with whipped cream and cherry', 'Dessert', 106),
+(003, 'Chocolate Croissant', 0.75, 'A flaky, buttery croissant filled with chocolate', 'Snacks', 107),
+(004, 'Chocolate cake', 10.00, 'Chocolate cake with hot fudge chocolate and chocolate gratings', 'Cake', 107),
+(005, 'Mint Green Tea', 5.10, 'Loose-leaf green tea with a refreshing mint flavor', 'Hot Beverage', 108),
+(006, 'Iced Mocha', 6.00, 'Iced mocha with whipping cream', 'Cold Beverage', 108),
+(007, 'Rolls', 0.99, 'Rolls filled with chicken and vegetables', 'Snacks', 109),
+(008, 'Vanilla Milkshake', 5.00, 'A creamy vanilla milkshake with whipping cream', 'Dessert', 109),
+(009, 'Pattis', 0.50, 'Pattis filled with chicken and vegetables', 'Snacks', 110),
+(010, 'Chocolate smoothie', 4.50, 'Smoothie with nuts', 'Dessert', 110);
+
+
+INSERT INTO
+Ordert (ordertID, Date_Time, C_City, C_Street, Quantity, StaffID, CustomerID)
+VALUES
+(554, '2022-12-01 12:00', 'New York', '123 Main Street', 1, 101, 1001),
+(555, '2022-01-02 09:30', 'Los Angeles', '789 Oak Blvd', 1, 101, 1002),
+(556, '2022-12-03 14:00', 'Miami', '321 Pine St', 3, 102, 1003),
+(557, '2022-01-05 18:00', 'Seattle', '654 Cedar Ave', 1, 102, 1004),
+(558, '2022-12-15 19.30', 'Chicago', '456 Maple Ave', 1, 103, 1005),
+(559, '2022-03-10 09:30', 'Boston', '32 Great Street', 2, 103, 1006),
+(560, '2022-12-20 12.30', 'California', '34 Lovely Street', 4, 104, 1007),
+(561, '2022-01-15 21.30', 'Saint Diego', '62 Prince Street', 1, 104, 1008),
+(562, '2022-12-28 17.30', 'Texas', '56 Pretty road', 4, 105, 1009),
+(563, '2022-02-20 12.45', 'Texas', '42 Oak street', 2, 105, 1010);
+
+INSERT INTO 
+product_carry (ProductID, ordertID)
+VALUES
+(001, 554),
+(002, 555),
+(003, 556),
+(004, 557),
+(005, 558),
+(006, 559),
+(007, 560),
+(008, 561),
+(009, 562),
+(010, 563);
+
+INSERT INTO
+Payment (PaymentID,CustomerID,Amount,PaymentDate)
+VALUES
+(2001, 1001, 6.99, '2022-12-02'),
+(2002, 1002, 5.00, '2022-01-03'),
+(2003, 1003, 0.75, '2022-12-04'),
+(2004, 1004, 10.00, '2022-01-06'),
+(2005, 1005, 5.10, '2022-12-16'),
+(2006, 1006, 6.00, '2022-03-15'),
+(2007, 1007, 0.99, '2022-12-26'),
+(2008, 1008, 5.00, '2022-01-20'),
+(2009, 1009, 0.50, '2022-01-01'),
+(2010, 1010, 4.50, '2022-02-28');
+
+INSERT INTO
+Online (PaymentID, Amount,PaymentDate,Bank_Account_Details)
+VALUES
+(2001, 14.99, '2022-12-02', '11234567890'),
+(2002, 5.00, '2022-01-03', '16754958958'),
+(2003, 3.99, '2022-12-04', '12573497654'),
+(2004, 10.00, '2022-01-06', '15643589013'),
+(2005, 5.10, '2022-12-16', '13425646780');
+
+INSERT INTO
+Cash_on_Delivery (PaymentID,Amount,Receipt,PaymentDate)
+VALUES
+(2006, 6.00, '5064V', '2022-03-15'), 
+(2007, 3.99, '5065V', '2022-12-26'),
+(2008, 5.00, '5066V', '2022-01-20'),
+(2009, 4.20, '5067V', '2022-01-01'),
+(2010, 4.50, '5068V', '2022-02-28'); 
+

@@ -1,0 +1,132 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class SpellChecker {
+    
+    private Node root;
+    
+    private static class Node {
+        private String word;
+        private Node left, right;
+        
+        public Node(String word) {
+            this.word = word;
+            left = null;
+            right = null;
+        }
+    }
+    
+    public void insert(String word) {
+        root = insert(root, word);
+    }
+    
+    private Node insert(Node node, String word) {
+        if (node == null) {
+            return new Node(word);
+        }
+        
+        if (word.compareTo(node.word) < 0) {
+            node.left = insert(node.left, word);
+        } else if (word.compareTo(node.word) > 0) {
+            node.right = insert(node.right, word);
+        }
+        
+        return node;
+    }
+    
+    public List<String> spellChecker(String a) {
+        List<String> result = new ArrayList<>();
+        if (contains(a)) {
+            result.add(a);
+            return result;
+        }
+        
+        // perform spell check
+        spellChecker(root, a, result);
+        
+        return result;
+    }
+    
+    private void spellChecker(Node node, String a, List<String> result) {
+        if (node == null) {
+            return;
+        }
+        
+        // check if a is a misspelled word that can be corrected to node.word
+        if (isOneEditAway(a, node.word)) {
+            result.add(node.word);
+        }
+        
+        spellChecker(node.left, a, result);
+        spellChecker(node.right, a, result);
+    }
+    
+    private boolean contains(String word) {
+        Node node = root;
+        while (node != null) {
+            if (word.equals(node.word)) {
+                return true;
+            } else if (word.compareTo(node.word) < 0) {
+                node = node.left;
+            } else {
+                node = node.right;
+            }
+        }
+        return false;
+    }
+    
+    private boolean isOneEditAway(String s1, String s2) {
+        int len1 = s1.length();
+        int len2 = s2.length();
+        int diff = Math.abs(len1 - len2);
+        
+        // words are not one edit away if the length difference is more than 1
+        if (diff > 1) {
+            return false;
+        }
+        
+        int i = 0;
+        int j = 0;
+        int edits = 0;
+        
+        while (i < len1 && j < len2) {
+            if (s1.charAt(i) == s2.charAt(j)) {
+                i++;
+                j++;
+            } else if (len1 > len2) {
+                i++;
+                edits++;
+            } else if (len1 < len2) {
+                j++;
+                edits++;
+            } else {
+                i++;
+                j++;
+                edits++;
+            }
+            
+            if (edits > 1) {
+                return false;
+            }
+        }
+        
+        // handle the case where the longer word has an extra character at the end
+        if (i < len1 || j < len2) {
+            edits++;
+        }
+        
+        return edits == 1;
+    }
+    
+    public static void main(String[] args) {
+        SpellChecker spellChecker = new SpellChecker();
+        spellChecker.insert("hello");
+        spellChecker.insert("world");
+        spellChecker.insert("how");
+        spellChecker.insert("are");
+        spellChecker.insert("you");
+        
+        List<String> result = spellChecker.spellChecker("hllo");
+        System.out.println(result);
+    }
+}

@@ -1,0 +1,155 @@
+---
+title: "R_Documentation_02"
+author: "Prashan Rathnayaka"
+date: "2022-12-16"
+output: pdf_document
+---
+# INSTALL AND LOAD PACKAGES
+```{r}
+# pacman: for loading/unloading packages
+# party: for decision trees
+# psych: for many statistical procedures
+# rio: for importing data
+# tidyverse: for so many reasons
+
+#Install and load the "tidyverse"
+#install.packages("tidyverse")
+library(tidyverse)
+library(readxl)
+```
+# PIPING COMAND WITH %>%
+```{r}
+#For mac: Shift+cmd+m
+#For windows: Ctrl+Shift+m
+data <- c(1, 3, 5, 7, 11, 13, 17)
+
+mean(diff(data^2))
+
+data^2 %>%
+  diff() %>%
+  mean()
+```
+# SOME SAMPLE DATASETS
+```{r}
+# iris data
+?iris
+#iris
+
+# UCBAdmissions
+?UCBAdmissions
+#UCBAdmissions
+
+# Titanic
+?Titanic
+#Titanic
+
+# state.x77
+?state.x77
+#state.x77
+
+#swiss
+?swiss
+#swiss
+```
+# IMPORT FILES
+```{r}
+# Import CSV files with readr::read_csv() from tidyverse
+df_csv <- read_csv("data/StateData.csv")
+
+#Get a glimpse of your data
+glimpse(df_csv)
+
+#Print 1st six rows
+head(df_csv)
+
+# Import CSV files with read_excel() from readxl
+df_excel <- read_excel("data/StateData.xlsx")
+
+```
+# ESTIMATES OF LOCATION
+```{r}
+#####Mean
+mtcars %>% 
+  view()
+
+mean(mtcars$mpg)
+
+######Trimmed mean
+mean(mtcars$mpg, trim = 0.1) #This is the mean of the dataset after the smallest 10% and largest 10% of values have been removed from the dataset.
+
+######Weighted mean
+
+#Weighted means are useful in a wide variety of scenarios. For example, a student may use a weighted mean in order to calculate his/her percentage grade in a course. In such an example, the student would multiply the weighing of all assessment items in the course (e.g., assignments, exams, projects, etc.) by the respective grade that was obtained in each of the categories.
+
+#Consider a student with the following grades:
+
+item <- c("Assignment01","Assignment02","Mid_sem_exam","Final_exam")
+weight <- c(10,10,30,50) # in %
+grade <- c(70,65,70,85) # in %
+
+studentA <- cbind(item,weight,grade) %>% 
+  view()
+
+weighted.mean(grade,weight)
+
+#when the weights are equal, weighted mean is same as the mean
+new_weight <- c(25,25,25,25) # in %
+weighted.mean(grade,new_weight)
+mean(grade)
+
+######Median
+#If there is an even number of data values, the middle value is one that is no actually in the data set,but rather the average of the two values that divide the sorted data into upper and lower halves.
+mtcars %>% 
+  count() 
+median(mtcars$mpg)
+```
+# Estimates of Variability
+```{r}
+#consider mpg column in mtcars
+x_bar <- mean(mtcars$mpg)
+
+#Deviations
+mean_deviation <- mtcars$mpg-x_bar
+
+#Variance
+variance <- (sum((mean_deviation)^2))/(nrow(mtcars)-1) # manual calculation
+
+var(mtcars$mpg) #using the function "var"
+
+#Standard deviation
+sqrt(variance) # manual calculation
+
+sd(mtcars$mpg) #using the function "sd"
+
+#Mean absolute deviation 
+x <- c(1, 4, 2, 3, 7, 3, 8, 9, 2)
+sum(abs(x-mean(x))) / length(x)
+
+#Median absolute deviation from the median (MAD)
+median(x) # manual calculation
+sort(x)
+sort(x)-median(x)
+abs(sort(x)-median(x))
+median(abs(sort(x)-median(x)))
+
+#Additional Task: create y by changing one data point in x
+
+#Range
+max(mtcars$mpg)
+min(mtcars$mpg)
+max(mtcars$mpg)-min(mtcars$mpg)
+
+#Percentile
+#Find the 75th percentiles of the "mpg"
+quantile(mtcars$mpg, 0.75)
+
+#Find the 32nd, 57th and 98th percentiles of the "mpg"
+quantile(mtcars$mpg, c(.32,.57,.98))
+
+#Interquartile range
+IQR(mtcars$mpg)
+
+
+summary(mtcars$mpg)
+```
+

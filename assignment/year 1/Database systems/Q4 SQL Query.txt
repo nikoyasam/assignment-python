@@ -1,0 +1,49 @@
+ SELECT Name, Price #selecting columns that are needed to be displayed
+FROM product #from which table to select the data
+WHERE Price < 1.00 #only the products before 1.00 will be displayed
+ORDER BY Price; #sort according to the Ascending order
+
+SELECT Firstname, Surname,ContactNumber #selecting columns that are needed to be displayed
+FROM employee #from which table to select the data
+WHERE Firstname IN ('Yann','Curt','Tim','Malia','Marc')  #first name of the deliverystaff members
+AND Surname IN ('Taylor', 'Thorpe', 'Norm', 'Mundi', 'Daniel') #surname of the deliverystaff members
+AND Surname LIKE '_o%'; #second letter of the surname is 'o'
+
+SELECT COUNT(*) AS ordert_count  #number of orders placed by Henry Jayden
+FROM customer as C 
+JOIN ordert as O
+ON C.CustomerID = O.CustomerID  #join customers table and order table 
+WHERE Firstname = 'Henry' AND Surname = 'Jayden';  # Finding the oder from this first name and surname
+
+
+SELECT Product_Type, Name, Price  #selecting columns that are needed to be displayed
+FROM product #from which table to select the data
+WHERE Price = (SELECT MAX(Price) FROM product WHERE Product_Type = 'Cake'); #to display the maximum price of that particular Product type in the product table
+
+SELECT Product_Type, Name, Price  #selecting columns that are needed to be displayed
+FROM product #from which table to select the data
+WHERE Price = (SELECT MAX(Price) FROM product WHERE Product_Type = 'Dessert'); #to display the maximum price of that particular Product type in the product table
+
+SELECT Product_Type, Name, Price  #selecting columns that are needed to be displayed
+FROM product #from which table to select the data
+WHERE Price = (SELECT MAX(Price) FROM product WHERE Product_Type = 'Cold Beverage'); #to display the maximum price of that particular Product type in the product table
+
+SELECT Product_Type, Name, Price  #selecting columns that are needed to be displayed
+FROM product #from which table to select the data
+WHERE Price = (SELECT MAX(Price) FROM product WHERE Product_Type = 'Snacks'); #to display the maximum price of that particular Product type in the product table
+
+SELECT Product_Type, Name, Price  #selecting columns that are needed to be displayed
+FROM product #from which table to select the data
+WHERE Price = (SELECT MAX(Price) FROM product WHERE Product_Type = 'Hot Beverage'); #to display the maximum price of that particular Product type in the product table
+
+
+SELECT StaffID, ordertID, ProductID, Quantity  #selecting columns that are needed to be displayed
+FROM ordert #from which table to select the data
+WHERE Date_Time BETWEEN '2022-12-01' AND '2022-12-31' #to display the orders in this month
+
+SELECT S.StaffID,O.ordertID,pc.ProductID,O.Quantity
+From ordert O INNER JOIN Steward S 
+ON S.StaffID = O.StaffID #joins steward table and order table using StaffID
+INNER JOIN product_carry as pc
+ON pc.ordertID = O.ordertID #joins orderID in product_carry table and orderID in order Table
+WHERE O.Date_time BETWEEN '2022-12-01' AND '2022-12-31'; #the date should be within this particular month

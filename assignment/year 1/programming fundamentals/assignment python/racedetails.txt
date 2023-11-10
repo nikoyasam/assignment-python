@@ -1,0 +1,3 @@
+
+2022/12/11,john,Barcelona,3,7,anne,Hojles,4,12,ben,Hojles,5,12,peter,Nyrad,9,12,betty,norway,6,12,jenny,Barcelona,7,12,bella,Barcelona,1,12,jen,norway,2,22
+2022/12/16,john,norway,5,0,anne,Nyrad,7,0,ben,norway,1,0,peter,Riga,8,0,betty,Hojles,4,5,jenny,norway,3,12,bella,Riga,6,12,jen,norway,9,12

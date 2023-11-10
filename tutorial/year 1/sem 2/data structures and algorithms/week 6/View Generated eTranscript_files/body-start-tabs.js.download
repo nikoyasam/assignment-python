@@ -1,0 +1,789 @@
+﻿var sitsSideBarChange = "N";
+var sitsHelpContent = "";
+
+sits_attach_event(window, "load", sitsPortalTabsInit);
+
+function sitsPortalTabsInit(){
+	
+  $('#sv-sidebar-collapse').on('click', function () {
+	sits_toggle_sidebar();
+  });
+	
+	
+	
+  //756813	
+  if ( portalSrchShowNotification === "N" ){
+    $("#sv-header-notifications").remove();
+  }
+  if ( portalSrchShowSrch === "N" ){
+    $("#sits_search_input_xs").closest(".sv-input-group").remove();
+    $("#sits_search_input_sm_edge").closest(".sv-input-group").remove();
+  }
+  if ( portalSrchShowHelp === "N" ){
+    $("#sv-header-help").remove();
+  }
+  
+	
+  $('#sv-header-pin').on('click', function () {
+	sits_toggle_fixed_header();
+  });		
+  var key = $("#sits_search_key")
+  if($("#sits_search_key").length > 0 ) { // 756813 check the kkey is present first
+	$('#sv-header-help').on('click', function () {
+		if($(".sv-helpbar-content").is(":visible")){
+			sits_dialog_close(true, "sv-helpbar-dialog");
+		} else {
+			sits_helpbar_dialog();
+		}
+	});	
+	$('#sv-navbar-options-dialog-button').on('click', function () {
+		sits_open_navbar_options_dialog();
+	});
+	//$(window).on('resize', function () {	
+	//	$("table.dataTable").DataTable().columns.adjust().draw();
+	//});
+	addSearch();
+	if( portalSrchShowNotification === "Y" && portalSrchShowIcon === "Y" ) {  //756813
+	  sitsNotificationIcon();
+    }
+  }
+  sits_initialise_header_and_sidebar();
+		
+}
+function sitsNotificationIcon(){
+  var pars = "MODE=NOTIFICATIONICON";
+  portalSrchSendQuery(pars,"NO", "Y");	  		
+}	
+function sitsNotificationIconReturn(response){
+	
+  var count = 	response.COUNT;
+  var Html = "";
+  if ( count > 0 ){	  
+    if (count > 9 ){count = "!";}
+    Html = '<span class="sv-number-notification">'+count+'</span>';
+    Html += '<span class ="sv-sr-only">'+sits_replace(portalSrchBp(212), "{0}", response.COUNT)+'</span>';
+  }	  
+  $("#sv-header-notifications").find("span.glyphicon").html(Html) ;
+  if ( portalSrchRefreshRate > 0 ){
+    var refreshRate = portalSrchRefreshRate * 1000;
+    setTimeout (sitsNotificationIcon, refreshRate);	
+  }	
+}
+
+function sitsNotifications(){
+  // always count again when opening the dialog
+  var pars = "MODE=NOTIFICATIONS";
+  portalSrchSendQuery(pars);	  
+/*
+	//if( $("#sitsNotificationsDialog").length < 1 ){ 
+		var pars = "MODE=NOTIFICATIONS";
+		portalSrchSendQuery(pars);	  
+//	}else{
+	//	if( $('#sitsNotificationsDialog').dialog('isOpen') ){
+	//		sits_dialog_close(false, "sitsNotificationsDialog");
+	//	}else{	
+	//		$("#sitsNotificationsDialog").dialog("open");
+	//		sitsNotificationsDialog();
+	//	} 
+//	}	
+*/
+}
+
+function sitsNotificationsReturn(response){ 
+	var btn = {};				
+	var html =  sitsBuildNotifications(response);
+	sits_dialog(portalSrchBp(214), html, btn, true, true, false, 0, "sitsNotificationsDialog", true, 15);	 
+	sitsNotificationsDialog()
+}
+
+function sitsBuildNotifications(response){ 
+	var html =  sits_replace(portalSrchBp(212), "{0}", response.COUNT);
+	//var link = '<br><a href="'+response.LINK+'">'+portalSrchBp(213)+'</a>';
+	
+	var link = '<ul class="sv-list-group"><li class="sv-list-group-item sv-list-group-item-overflow">'+html+'</li>';
+    link += '</li></ul>'
+	link += '<a href="'+response.LINK+'" class="sv-btn sv-btn-block sv-btn-primary">'+portalSrchBp(213)+'</a>';
+
+	return link;
+}
+
+function sitsNotificationsDialog(){
+	var that = $("#sv-header-notifications") ;
+	$("#sitsNotificationsDialog").dialog("option", "position", {
+		my: "right top",
+		at: "center bottom",
+		of: that // this refers to the cliked element
+	});	 	
+	$(".ui-widget-overlay").on("click", function(){
+		sits_dialog_close(false, "sitsNotificationsDialog"); 
+		$(document).off("keydown", sitsNotificationsEscape)//handle escape
+	});
+	$(document).on("keydown", sitsNotificationsEscape)//handle escape      
+}
+
+function sitsNotificationsEscape(e){	
+	$(document).on("keydown", function(e){//handle escape      
+		if(e.which==27) {
+			$(document).off("keydown", sitsNotificationsEscape )//handle escape         
+			sits_dialog_close(false, "sitsNotificationsDialog");
+			return sits_cancel_event(e); //cancel key down
+		}
+	})
+}	  
+
+///////////// profile functions
+function sitsProfileDetails(e){
+	if( $("#sitsProfileDetailsDialog").length < 1 ){ 
+		var pars = "MODE=PROFILE";
+		portalSrchSendQuery(pars);	  
+	}else{
+		if( $('#sitsProfileDetailsDialog').dialog('isOpen') ){
+			sits_dialog_close(false, "sitsProfileDetailsDialog");
+		}else{	  
+			$("#sitsProfileDetailsDialog").dialog("open");
+			sitsProfileDetailsDialog();
+		}   
+	}	
+}
+
+function sitsProfileDetailsReturn(obj){ 
+
+	var html = sitsBuildProfileDetails(obj);
+
+	var btn = {};
+	btn[portalSrchBp(203)] = function (){
+	  $(document).off("keydown", sitsProfileEscape)//handle escape      		
+	  sits_dialog_close(false, "sitsProfileDetailsDialog");
+	};	
+
+	sits_dialog(portalSrchBp(211), html, btn, true, true, false, 0, "sitsProfileDetailsDialog", true, 30);	 
+	sitsProfileDetailsDialog();
+	//$(".sv-profile-image-container").hover(function(){ $(".sv-profile-edit-image-button").css("visibility", "visible") ;} ,  function(){ $(".sv-profile-edit-image-button").css("visibility", "hidden"); });
+	$(".sv-profile-edit-image-button").on("click", sitsProfileEditImage);
+ 
+}
+
+function sitsBuildProfileDetails(obj){
+  
+	var imgSrc = obj.PHOTO ||  "../images/icons/profile-photo.png";
+	var html = '<ul id="profileSection" class="sv-list-group">' ;
+	html += '<li class="sv-list-group-item sv-list-group-item-overflow">';
+
+    //756813
+	if ( portalSrchShowImage === "Y" ){
+	  html += '<span class="sv-profile-image-container sv-center-block"><img class ="accountProfilePhoto" src = "'+imgSrc+'"></img> ';		
+      if ( portalSrchEditImage === "Y" ){
+  	    html += '<button aria-label="Edit avatar photo" class="sv-profile-edit-image-button">edit</button>';
+      }
+	  html += '</span>';
+	}  
+	html += '<div class="sv-text-center sv-center-block">'+obj.NAME+'</div></li>';
+	//html += '<li class="sv-list-group-item sv-list-group-item-overflow"> stuff </li>';
+
+	if ( obj.TWOFALINK !== "" && typeof obj.TWOFALINK !==  "undefined" ){
+		html += '<a href="'+obj.TWOFALINK+'" class="sv-list-group-item sv-list-group-item-overflow">'+portalSrchBp(216)+'</a>';		
+	}	
+	if ( obj.MAILINK !== ""   && typeof obj.MAILINK !==  "undefined"){
+		html += '<a href="'+obj.MAILINK+'" class="sv-list-group-item sv-list-group-item-overflow">'+portalSrchBp(218)+'</a>';		
+	}	
+	if ( obj.MUALINK !== "" && typeof obj.MUALINK !==  "undefined" ){
+		html += '<a href="'+obj.MUALINK+'" class="sv-list-group-item sv-list-group-item-overflow">'+portalSrchBp(217)+' </a>';		
+	}	
+
+	if ( obj.ExtraLinks !== "" && typeof obj.ExtraLinks ===  "object" ){
+		var extraLinks = "";
+		$.each(obj.ExtraLinks, function(i, obj){
+			var target = "";  
+			if ( i !== "DUMMY" ){    
+				if (obj.TARGET === "Y" ){
+					target =  ' target="_blank"';
+					if( obj.HREF.indexOf("://") > 0 ){
+						target += ' rel="noopener noreferrer"';
+					}  
+				}			  
+				extraLinks = '<a href="'+obj.HREF+'" class="sv-list-group-item sv-list-group-item-overflow"'+target+'>'+obj.LABEL+'</a>'+extraLinks;
+			}   
+		})
+		html += extraLinks;
+		;	
+	} 
+	if ( obj.LOGOUT !== "" && typeof obj.LOGOUT !==  "undefined" ){
+		html += '<a href="'+obj.LOGOUT+'" class="sv-btn-primary sv-btn sv-btn-block">'+portalSrchBp(215)+'</a>';
+	} 
+	html += '</ul>';
+	  
+	return html;
+  
+}
+
+
+function sitsProfileDetailsDialog(){
+	var that = $("#sv-header-profile") ;
+	$("#sitsProfileDetailsDialog").next(".ui-dialog-buttonpane").hide();
+	$("#sitsProfileDetailsDialog").dialog("option", "position", {
+		my: "right top",
+		at: "center bottom",
+		of: that // this refers to the cliked element
+	});	 	
+	$(".ui-widget-overlay").on("click", function(){sits_dialog_close(false, "sitsProfileDetailsDialog"); $(document).off("keydown", sitsProfileEscape)//handle escape
+	});	
+	$(document).on("keydown", sitsProfileEscape)//handle escape      
+}
+
+   
+function sitsProfileEscape(e){
+	if(e.which==27) {
+		if ( $('#sitsProfileImageDialog').dialog('isOpen') === true){
+		}else{	
+			$(document).off("keydown", sitsProfileEscape)//handle escape         
+			sits_dialog_close(false, "sitsProfileDetailsDialog");
+		}
+		return sits_cancel_event(e); //cancel key down
+	}
+}	  
+
+
+function sitsProfileEditImage(){
+	if( $("#sitsProfileImageDialog").length >0 ){ 
+		$("#sitsProfileImageDialog").dialog("open");
+		sits_dialog_resize(60,"sitsProfileImageDialog");
+		return;
+	}	  
+	sits_dialog_loading();
+	var pars = "MODE=PLUPLOAD";
+	if ( typeof sits_attach_plupload === "function" ){
+		pars += "&JSREQ=N";
+	}else{
+		pars += "&JSREQ=Y";
+	}	
+	portalSrchSendQuery(pars);		
+}
+
+
+function sitsProfileEditImageReturn(obj){
+	var btn = {};
+	btn[portalSrchBp(203)] = function (){
+		sits_dialog_close(false, "sitsProfileImageDialog");
+		sitsProfileRefreshImage();
+	};	
+	var html = '<div id="profileEditImageDialog" class="sv-container-fluid">'+obj.PLUPHTML+'</div>';
+	sits_dialog(portalSrchBp(208), html, btn, true, true, false, 0, "sitsProfileImageDialog", true, 60);	 
+}
+
+
+function sitsProfileRefreshImage(){
+	sits_dialog_loading();
+	var pars = "MODE=PROFILEPIC";
+	portalSrchSendQuery(pars);		
+}
+
+
+function sitsProfileRefreshImageReturn(obj){
+	var imgSrc = obj.PHOTO ||  "../images/icons/profile-photo.png";	 	
+	$(".accountProfilePhoto").attr("src", imgSrc);
+}
+
+
+///////////// search functions
+function addSearch() {
+	$("#sv-header-notifications").on("click", sitsNotifications)
+	$("#sv-header-profile").on("click",sitsProfileDetails)
+	var div = $("#sits_search_div");
+	var btn = div.find("button").removeAttr("name");
+	var inp = div.find("input").removeAttr("name").filter(":text");
+	var key = $("#sits_search_key").removeAttr("name");
+
+
+	if(btn.length>0 && inp.length>0 && key.length==1) { //check everything exists          
+		$("#sits_search_button_sm").attr("aria-haspopup","true").attr("aria-expanded",false); //accessibility
+		btn.attr("title",portalSrchBp(210)); 
+		btn.attr("aria-label",portalSrchBp(210));      
+		inp.attr("title",portalSrchBp(209));
+		inp.attr("placeholder",portalSrchBp(209)); 
+		inp.on("keydown",function(e) { //handle return key
+			if(e.which==13) {
+				$(sits_get_object(sits_replace(this.id,"input","button"))).click(); //click related button
+				return sits_cancel_event(e); //cancel key down
+			}
+		});
+	  
+		btn.on("click",function(e) { //hijack button click	  
+			var inp = $(sits_get_object(sits_replace(this.id,"button","input"))); //get related input
+
+		/*        if(this.id.indexOf("_xs")<0) {
+			  if(!inp.is(":visible")) {
+				inp.removeClass("sv-hide").css("top",0).css("left",0).css("position","absolute"); //show (to calculate position)
+				var off = $(this).offset();
+				var css = {};
+				css.top = off.top; //calculate position
+				css.left = off.left-inp.outerWidth();
+				inp.css(css).focus();
+				$(this).attr("aria-expanded",true);
+				return sits_cancel_event(e); //cancel button click
+			  }
+			  else if(inp.val()=="") { //hide input field
+				inp.addClass("sv-hide").removeAttr("style");
+				$(this).attr("aria-expanded",false).focus();
+				return sits_cancel_event(e); //cancel button click
+			  }
+			}
+			//ajax based
+			*/
+		
+			portalSrch(inp.val());
+		
+			//var url = document.location.href; //get current url
+			//url = url.substr(0,url.lastIndexOf("/"))+"/siw_portal_srch.start_url?"+key.val()+"~"+sits_escape_url(inp.val());
+			//document.location.href = url; //redirect browser
+			return sits_cancel_event(e); //cancel button click
+		});
+	  /*$(window).on("resize",sits_debounce_event(function(e) {
+		$("#sits_search_input_sm:visible").addClass("sv-hide"); //hide field on resize
+	  },500,true));*/
+	}      
+};
+
+function portalSrch(val){
+	if (val.length < 3 ){
+	  return;
+	}
+	var pars = "SRCH=" + sits_escape_url(val)+"&MODE=SRCH";
+	portalSrchSendQuery(pars);
+}
+
+
+function portalSrchFilter(){
+	// Declare variables
+	var input, filter, ul, li, a, i, txtValue;
+
+	filter = $("#dialogPortalSrch").val().toUpperCase();
+	ul = $("#portalSrchResultsUl");
+	li = $("#portalSrchResultsUl a");
+
+	// Loop through all list items, and hide those who don't match the search query
+	$.each(li, function(i){      
+		txtValue = $(this).text() ;// a.textContent || a.innerText; 
+		if (txtValue.toUpperCase().indexOf(filter) > -1) {
+			$(this).css("display","");
+		}else{
+			$(this).css("display","none");
+		}
+	})
+	portalSrchNoResults()
+	// sits_announce showing filtered values - or list updated
+}
+
+
+function portalSrchNoResults(){    
+	if ( $("#portalSrchResultsUl a:visible").length > 0 ){ 
+		$(".srchNoResults").css("display","none");
+	}else{
+		$(".srchNoResults").css("display","");	
+	}  
+}
+
+
+function portalSrchReturn(obj){
+	var html = "";
+	if ( $("#portalSrchResults").length < 1  ){
+	  var val = "";
+	  if ($("#sits_search_input_sm:visible").length > 0 ) {
+			val = $("#sits_search_input_sm").val();
+      }else{
+			val = $("#sits_search_input_xs").val();
+	  }
+	  html = '<div id="portalSrchResults" class="sv-container-fluid">';
+	  html += '<div class="sv-row">';
+      html +=	  '<div class="sv-col-md-12">';
+	  html +=	    '<div class="sv-form-container">';
+	  html +=		  '<div class="sv-form-horizontal">';
+	  html +=		    '<fieldset>';
+	  html +=			  '<legend class="sv-sr-only">'+portalSrchBp(202)+'</legend>';
+	  html +=			  '<div class="sv-form-group">';
+	  html +=				'<div class="sv-col-sm-12">';
+	  html +=				  '<div class="sv-input-group"><input title="'+sits_escape_attr(portalSrchBp(204))+'" id="dialogPortalSrch" type="text" class="sv-form-control" maxlength="50" value=""><span class="sv-input-group-btn">   <button class="sv-btn sv-btn-default" id="portalSrchBtn"><span class="glyphicon glyphicon-search"></span></button></span></div>';
+//		html +=				  '<div class="sv-input-group"><input title="'+portalSrchBp(204)+'" id="dialogPortalSrch" type="text" class="sv-form-control" maxlength="50" value=""><span class="sv-input-group-btn">   <button class="sv-btn sv-btn-default" id="portalSrchBtn"><span class="glyphicon glyphicon-search"></span></button></span></div>';
+
+	  html +=				'</div>';
+	  html +=		      '</div>';
+	  html +=			'</fieldset>';
+      html +=           '<div class="sv-panel sv-panel-default">';
+	  html +=             '<div class="sv-panel-heading"><h2 class="sv-panel-title">'+portalSrchBp(202)+'</h2></div>';	 	
+	  html +=               '<ul id="portalSrchResultsUl" class="sv-list-group">' ;
+	  html += '<li class="sv-list-group-item sv-list-group-item-overflow srchNoResults" role="button" >'+portalSrchBp(205)+'</li>';
+	  $.each(obj.RESULTS, function(id, link){
+		if ( id!== "DUMMY"){
+		  html+= link;
+		}
+	  })
+		  
+		  
+	  html+="</ul></div></div></div></div></div></div>";	
+	  var btn = {};
+	  btn[portalSrchBp(203)] = function (){
+			sits_dialog_close(true, "sitsSrchDialog");
+	  };
+	  sits_dialog(portalSrchBp(201), html, btn, true, true, false, 0, "sitsSrchDialog", true, 35);
+	  if ( val !== "" ){
+			$("#dialogPortalSrch").val(val);
+      }
+	  $("#portalSrchBtn").on("click", function(){ portalSrch($("#dialogPortalSrch").val())})	  
+	  $("#dialogPortalSrch").on("keydown",function(e) { //handle return key
+		if(e.which==13) {
+	  	  portalSrch($("#dialogPortalSrch").val())
+				return sits_cancel_event(e); //cancel key down
+		}
+	  });	 
+	  $("#dialogPortalSrch").on("keyup", portalSrchFilter)
+	}else{
+		html += '<li class="sv-list-group-item sv-list-group-item-overflow srchNoResults" role="button" >'+portalSrchBp(205)+'</li>';
+		$.each(obj.RESULTS, function(id, link){
+			if ( id!== "DUMMY"){  
+				html+= link
+			}
+		})
+		$("#portalSrchResultsUl").empty().append(html)  
+	}
+	portalSrchNoResults()
+}  
+
+// generic functions
+function portalSrchSendQuery(pars,loadingDialog, quiet){
+	if(loadingDialog != "NO"){
+		sits_dialog_loading();
+	}
+	var key = $("#sits_search_key")
+	if( key.length === 0 ) {
+		return
+    }
+	pars += "&NKEY=" + sits_escape_url(key.val()); 
+	if ( quiet === "Y" ){
+	  sits_send_query("POST", "SIW_PORTAL_SRCH.ajax_in", pars, false, "portalSrchSendQueryReturnQuiet");
+	}else{	
+	  sits_send_query("POST", "SIW_PORTAL_SRCH.ajax_in", pars, false, "portalSrchSendQueryReturn");
+	}  
+}
+
+function portalSrchSendQueryReturnQuiet(response){
+  var sub = response.substr(0, 4);
+  if ( sub !== "<OK>") {
+	return true;    // dont error 
+  }
+  portalSrchSendQueryReturn(response);
+}
+function portalSrchSendQueryReturn(response){
+	var sub = response.substr(0, 4);
+	response = response.substr(4);
+	if (sub !== "~NO~" && sub !== "<OK>") {
+  	   sits_dialog_loading(false); // this could interfere with other loading dialogs so only do it if no notification 
+       window.location.href= "siw_lgn_logout.autologout";	   
+	   //portalSrchMessageBox(portalSrchBp(206), portalSrchBp(207));// need boilerplates here
+	   return true;  
+	}
+
+	var obj = {};
+	obj = sits_parse_json(response);
+	if (sub === "~NO~" ) {
+   	    sits_dialog_loading(false); // this could interfere with other loading dialogs so only do it if no notification 
+		portalSrchMessageBox(portalSrchBp(206), obj.TEXT);// need boilerplates here
+		return true;  
+	}
+    if ( obj.MODE != "NOTIFICATIONICON" ){
+	  sits_dialog_loading(false); // this could interfere with other loading dialogs so only do it if no notification 
+	}    
+
+	switch (obj.MODE){
+	case "SRCH":	
+		portalSrchReturn(obj);
+		break;
+	case "PLUPLOAD":  
+		sitsProfileEditImageReturn(obj);
+		break;
+	case "PROFILE":  
+		sitsProfileDetailsReturn(obj);
+		break;
+	case "PROFILEPIC":  	    
+		sitsProfileRefreshImageReturn(obj)
+		break;
+	case "NOTIFICATIONS":  	    	
+		sitsNotificationsReturn(obj)
+		break;
+    case "NOTIFICATIONICON":
+        sitsNotificationIconReturn(obj);
+	    break;
+	case "HELP": 
+		var helpHTML = obj.HELPHTML;	
+		sitsHelpReturn(helpHTML)
+		break;
+	case "MOBILENAVBAROPTIONS":
+		sits_build_navbar_options_dialog(obj);
+		break;
+	default:   
+		portalSrchMessageBox("INVALIDMODE", "INVALIDMODE2="+obj.MODE);// need boilerplates here
+	}
+}
+
+
+function portalSrchMessageBox(messageTitle, messageContent){
+	// show errors and store messages  
+	var vtid = "srchMessageBox";
+	var btn = {};
+	btn[portalSrchBp(203)] = function (){
+		sits_dialog_close(true, vtid);
+	};
+	sits_dialog(messageTitle, messageContent, btn, true, true, false, 0, vtid, true, 50);
+	return;  
+}
+
+
+//helper function to get boilerplates
+function portalSrchBp(num){
+	num = num - 200;
+	return sits_get_bptext(portalSrchBpArray, num);
+}
+
+
+function sitsHelp(){
+	if( sitsHelpContent == "" ){ 
+		// need to get page context
+		var pars = "MODE=HELP";
+		if(typeof sitsHelpContext != 'undefined'){
+			pars += "&DATA=" + sits_escape_url(JSON.stringify(sitsHelpContext));
+		}
+		portalSrchSendQuery(pars,"NO");	  
+	} else {
+		sitsHelpReturn(sitsHelpContent);
+	}
+}
+
+function sitsHelpReturn(helpHTML){
+	$('.sv-helpbar-content').empty();
+	$('.sv-helpbar-content').append(helpHTML);
+	$('.sv-helpbar-content').removeClass('sv-helpbar-content-loading');
+	sits_announce(portalSrchBp(221)); // "Help loaded."
+	sitsHelpContent = helpHTML;
+}
+
+
+  
+
+function sits_get_cookie(cname) {
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length,c.length);
+		}
+	}
+	return "";
+}
+
+function sits_initialise_header_and_sidebar() {
+	var fixed_header=sits_get_cookie("sv-header-fixed");
+	if (fixed_header == 'True') {
+		sits_toggle_fixed_header();
+	}
+	if ($('#sv-sidebar-collapse').hasClass('sv-collapsed')) {
+		document.cookie = "sv-sidebar-collapsed=True; path=/";
+		$('#sv-sidebar-collapse').attr("aria-label","Expand side menu");
+	} else {
+		document.cookie = "sv-sidebar-collapsed=False; path=/";
+		$('#sv-sidebar-collapse').attr("aria-label","Collapse side menu");
+	}
+}
+
+function sits_toggle_fixed_header(){
+	$('#sv-header-pinned').toggleClass('sv-hidden');
+	$('#sv-header-unpinned').toggleClass('sv-hidden');
+	$('header').toggleClass('sv-header-fixed');
+	$('.sv-page-wrapper').toggleClass('sv-content-header-fixed');
+	
+	if ($('header').hasClass('sv-header-fixed')) {
+		document.cookie = "sv-header-fixed=True; path=/";
+		$('#sv-header-pin').attr("aria-label","Unpin Header");
+		$('#sv-header-pin').addClass('sv-header-pinned-button');
+	} else {
+		document.cookie = "sv-header-fixed=False; path=/";
+		$('#sv-header-pin').attr("aria-label","Pin Header");
+		$('#sv-header-pin').removeClass('sv-header-pinned-button');
+	}
+}
+
+function sits_toggle_sidebar(){
+	$('#sv-sidebar').toggleClass('sv-collapsed');
+	$('#sv-sidebar-collapse').toggleClass('sv-collapsed');
+	$('.sv-sidebar-toggle-transition').toggleClass('sv-collapsed');
+	$('#sv-sidebar-menubar').toggleClass('sv-collapsed-menu');
+
+	if ($('#sv-sidebar-collapse').hasClass('sv-collapsed')) {
+		// no point adding classes to the responsive menu
+		//$('.sv-nav-title').addClass('sv-nav-hidden');
+  	    //$('.sv-nav-caret').addClass('sv-nav-hidden');
+		//$('.sv-nav > li > a').addClass('sv-nav-link-collapsed-panel');
+
+		$('#sv-sidebar').find('.sv-nav-title').addClass('sv-nav-hidden');
+		$('#sv-sidebar').find('.sv-nav-caret').addClass('sv-nav-hidden');
+		$('#sv-sidebar').find('.sv-nav > li > a').addClass('sv-nav-link-collapsed-panel');
+
+	} 
+
+	sits_sidebar_pre_retriggers();
+	$('#sv-sidebar-collapse').one('transitionend', function () {
+		if (!$('#sv-sidebar-collapse').hasClass('sv-collapsed')) {
+			//$('.sv-nav-title').removeClass('sv-nav-hidden');
+			//$('.sv-nav-caret').removeClass('sv-nav-hidden');
+			//$('.sv-nav > li > a').removeClass('sv-nav-link-collapsed-panel');
+			
+			$('#sv-sidebar').find('.sv-nav-title').removeClass('sv-nav-hidden');
+			$('#sv-sidebar').find('.sv-nav-caret').removeClass('sv-nav-hidden');
+			$('#sv-sidebar').find('.sv-nav > li > a').removeClass('sv-nav-link-collapsed-panel');
+			
+		}
+		sits_sidebar_retriggers();
+	});
+	
+	if ($('#sv-sidebar-collapse').hasClass('sv-collapsed')) {
+		document.cookie = "sv-sidebar-collapsed=True; path=/";
+		$('#sv-sidebar-collapse').attr("aria-label","Expand side menu");
+	} else {
+		document.cookie = "sv-sidebar-collapsed=False; path=/";
+		$('#sv-sidebar-collapse').attr("aria-label","Collapse side menu");
+	}
+}
+
+function sits_sidebar_pre_retriggers(){
+	$(".ui-tabs-nav, .ui-tabs-scroll-wrap").removeAttr("style");
+	$("table.dataTable").addClass('sv-hidden');
+}
+
+function sits_sidebar_retriggers(){
+	sitsSideBarChange = "Y";
+	$(window).trigger('resize');
+	sits_tablesaw_refresh(".tablesaw",false);
+	sits_tabs_refresh('.ui-tabs');
+	$("table.dataTable").removeClass('sv-hidden');
+	sits_datatables_recalc("table.dataTable");
+	sitsSideBarChange = "N";
+}
+
+
+function sits_open_navbar_options_dialog(){
+	var pars = "MODE=MOBILENAVBAROPTIONS";
+	portalSrchSendQuery(pars);	   	
+}
+
+
+function sits_build_navbar_options_dialog(response){ 
+
+	var Html = "";
+	var theListItems = {};
+
+	Html += "<div id=\"sitsHeaderOptionsTabs\">";
+	Html += "<ul id=\"sitsHeaderOptionsTabList\">";
+	Html += "</ul></div>";
+	theListItems.sitsHeaderOptionsProfileTab = portalSrchBp(211); //"Profile";
+	
+	
+	if ( portalSrchShowNotification != "N" ){ //756813 
+	  theListItems.sitsHeaderOptionsNotificationsTab = portalSrchBp(214); //"Notifications";
+	}   
+
+	// build buttons
+	btn = {};
+	btn[portalSrchBp(203)] = function (){  // Close
+	  sits_dialog_close(true, "sitsHeaderOptionsPopup");
+	};
+	
+	// create dialog   
+	sits_dialog("Options", Html, btn, true, true, false, 0, "sitsHeaderOptionsPopup", true, 65);
+	
+	var that = $('.sv-header-main');
+	$("#sitsHeaderOptionsPopup").dialog("option", "position", {
+	   my: "centre bottom",
+	   at: "centre top",
+	   of: that 
+	});	
+
+	// loop List object and build LIs and divs
+	$.each(theListItems, function(id, val){
+		$("#sitsHeaderOptionsTabList").append("<li><a href=\"#"+id+"\">" + val + "</a></li>");    
+		// need to build the form groups for each Tab  
+		$("#sitsHeaderOptionsTabs").append("<div id=\""+id+"\" class=\"sitsHeaderOptionsTabsDiv\">"+sitsHeaderOptionsTabContents(id, response)+"</div>");          
+	}) ;
+	if ( $("#sitsHeaderOptionsTabs").hasClass("ui-tabs") ){    
+		sits_tabs_refresh("#sitsHeaderOptionsTabs");
+	}else{   
+		sits_tabs("#sitsHeaderOptionsTabs");	
+	}
+	
+	//$(".sv-profile-image-container").hover(function(){ $(".sv-profile-edit-image-button").css("visibility", "visible") ;} ,  function(){ $(".sv-profile-edit-image-button").css("visibility", "hidden"); });
+	$(".sv-profile-edit-image-button").on("click", sitsProfileEditImage);
+	
+}
+
+function sitsHeaderOptionsTabContents(tabId, response){
+
+	var vHtml = "";
+
+	switch (tabId){
+  
+		case "sitsHeaderOptionsProfileTab" :
+			var profileResponseData = response.PROFILE;
+			vHtml = sitsBuildProfileDetails(profileResponseData);
+	
+			break;  
+
+		case "sitsHeaderOptionsNotificationsTab" :
+			var notificationResponseData = response.NOTIFICATIONS;
+			vHtml = sitsBuildNotifications(notificationResponseData);
+		
+			break; 
+			
+		default:
+	}  
+	
+	return vHtml
+
+}
+
+function sits_helpbar_dialog(){
+
+	var that = $("body");
+
+	var formGroups = "";
+	formGroups += '<div class="sv-helpbar-content sv-helpbar-content-loading">'
+	formGroups += '<h3>Loading</h3>'
+	formGroups += '<p><img src="../images/working.gif" alt="Loading" title="Loading, please wait..." aria-hidden="true"> Loading, please wait...</p>'
+	formGroups += '</div>'
+
+	// build buttons
+	btn = {};
+	btn[portalSrchBp(203)] = function (){  // Close
+	  sits_dialog_close(true, "sv-helpbar-dialog");
+	};
+	
+	// create dialog   
+	sits_dialog(portalSrchBp(219), formGroups, btn, true, false, false, 0, "sv-helpbar-dialog", true, 20); // Help
+	
+	$("#sv-helpbar-dialog").dialog("option", "position", {
+	   my: "right bottom",
+	   at: "right bottom",
+	   of: that 
+	});	
+	
+	$('#sv-helpbar-dialog').parent().css('position','fixed').css('top','7.769rem').css('left','-=5px').css('bottom','5px').draggable({axis:"x"})
+	$('#sv-helpbar-dialog').next(".ui-dialog-buttonpane").css('width','100%').css('position','absolute').css('bottom','0px');
+	
+	$( window ).resize(function() {
+		if(sitsSideBarChange != "Y"){
+			sits_dialog_close(true, "sv-helpbar-dialog");
+			sits_announce(portalSrchBp(220)); // "Help dialog closed."
+		}
+	});
+	
+	sitsHelp();
+}

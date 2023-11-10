@@ -1,0 +1,295 @@
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+
+public class CapitalGainCalculator {
+
+    public static void main(String[] args) {
+        Deque<Transaction> buyQueue = new Deque<Transaction>(); //initialize Dequeue with max size 100
+        Deque<Transaction> sellQueue = new Deque<Transaction>(); //initialize Dequeue with max size 100
+        Scanner scanner = new Scanner(System.in);
+        String input;
+        double totalGain = 0.0;
+
+        while (true) {
+            System.out.println("Enter B for buying transaction, S for selling transaction or Q to exit:");
+            input = scanner.nextLine().trim().toUpperCase();
+
+            if (input.equals("B")) {
+                System.out.println("Enter number of shares bought and unit price, separated by a space:");
+                String[] tokens = scanner.nextLine().trim().split(" ");
+                if (tokens.length != 2) {
+                    System.out.println("Invalid input, please try again.");
+                    continue;
+                }
+                int shares = 0;
+                double price = 0.0;
+                try {
+                    shares = Integer.parseInt(tokens[0]);
+                    price = Double.parseDouble(tokens[1]);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input, please try again.");
+                    continue;
+                }
+                if (shares <= 0 || price <= 0.0) {
+                    System.out.println("Invalid input, please try again.");
+                    continue;
+                }
+                buyQueue.addLast(new Transaction(shares, price));
+                System.out.println("Transaction recorded.");
+            } else if (input.equals("S")) {
+                System.out.println("Enter number of shares sold and unit price, separated by a space:");
+                String[] tokens = scanner.nextLine().trim().split(" ");
+                if (tokens.length != 2) {
+                    System.out.println("Invalid input, please try again.");
+                    continue;
+                }
+                int shares = 0;
+                double price = 0.0;
+                try {
+                    shares = Integer.parseInt(tokens[0]);
+                    price = Double.parseDouble(tokens[1]);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input, please try again.");
+                    continue;
+                }
+                if (shares <= 0 || price <= 0.0) {
+                    System.out.println("Invalid input, please try again.");
+                    continue;
+                }
+
+The program uses two Deques (double-ended queues), buyQueue and sellQueue, to store the buy and sell transactions, respectively. It prompts the user to 
+enter a character 'B' for buying a transaction, 'S' for selling a transaction, or 'Q' to exit the program.
+
+If the user enters 'B', the program prompts the user to enter the number of shares bought and the unit price, separated by a space. It then checks the 
+validity of the input by ensuring that there are exactly two tokens, both of which can be parsed into an integer and a double, respectively, and are 
+greater than zero. If the input is invalid, the program prints an error message and prompts the user to try again. If the input is valid, the program 
+creates a new Transaction object with the specified number of shares and unit price and adds it to the end of the buyQueue.
+
+If the user enters 'S', the program follows a similar process to the 'B' case, but instead creates a new Transaction object with the specified number of 
+shares and unit price and adds it to the end of the sellQueue.
+
+If the user enters 'Q', the program exits the while loop.
+
+After the while loop is exited, the program calculates the total capital gain (or loss) by iterating through the sellQueue. For each sell transaction, 
+it iterates through the buyQueue until the specified number of shares have been sold, using the FIFO protocol. For each buy transaction used to fulfill a 
+sell transaction, the program calculates the capital gain (or loss) by subtracting the unit price of the buy transaction from the unit price of the sell 
+transaction and multiplying the result by the number of shares sold. If the buy transaction was used to fulfill multiple sell transactions, its 
+capital gain (or loss) is added to a running total. If the sell transaction was not completely fulfilled by the buy transactions in the buyQueue, 
+the program prints an error message and exits. Finally, the program prints the total capital gain (or loss).
+
+
+This part of the code handles the case when the user inputs "S" to indicate a selling transaction. It first prompts the user to enter the number of shares 
+sold and the unit price, which are then stored in the tokens array after being split by spaces and trimmed to remove any leading/trailing whitespace.
+
+Next, the code checks if the length of tokens is equal to 2, meaning that both the number of shares sold and the unit price have been entered. If the 
+length is not equal to 2, the code prints an error message and continues with the loop to prompt the user for input again.
+
+If the length is valid, the code attempts to parse the values of shares and price from the tokens array using the parseInt() and parseDouble() methods 
+respectively. If either of these operations fail, meaning that the input is not a valid integer or double, the code prints an error message and continues 
+with the loop to prompt the user for input again.
+
+Finally, if both shares and price are successfully parsed and are greater than zero, the code creates a new Transaction object with these values and 
+adds it to the sellQueue deque using the addLast() method. The code then prints a message to indicate that the transaction has been recorded.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+int remainingShares = shares;
+                double gain = 0.0;
+                while (remainingShares > 0 && !buyQueue.isEmpty()) {
+                    Transaction oldestTransaction = buyQueue.removeFirst();
+                    if (remainingShares >= oldestTransaction.shares) {
+                        // sell all shares in the oldest transaction
+                        remainingShares -= oldestTransaction.shares;
+                        gain += (price - oldestTransaction.price) * oldestTransaction.shares;
+                    } else {
+                        // sell only some shares in the oldest transaction
+                        oldestTransaction.shares -= remainingShares;
+                        gain += (price - oldestTransaction.price) * remainingShares;
+                        remainingShares = 0;
+                        buyQueue.addFirst(oldestTransaction);
+                    }
+                }
+
+
+The remainingShares variable represents the number of shares that are yet to be sold. The gain variable represents the capital gain or loss that has been 
+realized so far. The loop continues to execute as long as there are shares yet to be sold (remainingShares > 0) and there are transactions in the queue 
+(!buyQueue.isEmpty()).
+
+Inside the loop, the oldest transaction is retrieved using buyQueue.removeFirst(). This transaction is the one that has been held the longest according to 
+the FIFO protocol. If the remaining shares are greater than or equal to the shares in the oldest transaction, then all of the shares in that transaction 
+are sold. The number of remaining shares is updated by subtracting the number of shares in the oldest transaction, and the capital gain or loss is updated 
+by multiplying the difference in price (price - oldestTransaction.price) with the number of shares in the oldest transaction (oldestTransaction.shares).
+
+If the remaining shares are less than the shares in the oldest transaction, then only some of the shares in the oldest transaction are sold. The number of 
+shares in the oldest transaction is updated by subtracting the remaining shares, and the capital gain or loss is updated by multiplying the difference in 
+price with the remaining shares. The remainingShares variable is updated to 0, since all shares have been sold. The oldest transaction is then added back 
+to the front of the queue, since it still has some shares that have not been sold.
+
+After the loop has executed, the gain variable contains the total capital gain or loss based on the FIFO protocol for the given sequence of transactions.
+
+If the remaining shares are greater than or equal to the shares in the oldest transaction explanation...
+
+In this part of the code, the program checks if the remaining shares to be sold are greater than or equal to the shares in the oldest transaction in the 
+
+buy queue.
+
+If the remaining shares are greater than or equal to the shares in the oldest transaction, it means that all shares in the oldest transaction can be sold. 
+In this case, the program subtracts the shares in the oldest transaction from the remaining shares to be sold and calculates the gain from the sale.
+
+The gain from the sale is calculated by taking the difference between the selling price and the price of the oldest transaction and then multiplying it by 
+the number of shares sold in that transaction. The gain is then added to the total gain.
+
+This process is repeated until either all the shares have been sold or the buy queue is empty.
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+int remainingShares = shares;
+
+This line initializes a variable called remainingShares to the total number of shares to be sold. This variable is used later in the loop to keep track of 
+how many shares are left to be sold.
+
+double gain = 0.0;
+
+This line initializes a variable called gain to 0.0. This variable is used to keep track of the total capital gain (or loss) so far.
+
+while (remainingShares > 0 && !buyQueue.isEmpty()) {
+
+This line starts a while loop that will execute as long as there are remaining shares to sell and there are transactions left in the buyQueue.
+
+Transaction oldestTransaction = buyQueue.removeFirst();
+
+This line removes the oldest transaction from the buyQueue and stores it in a variable called oldestTransaction. The removeFirst() method removes and 
+returns the first element in the buyQueue.
+
+if (remainingShares >= oldestTransaction.shares) {
+
+This line checks if the number of remaining shares is greater than or equal to the number of shares in the oldest transaction. If this is true, 
+all shares in the oldest transaction can be sold.
+
+remainingShares -= oldestTransaction.shares;
+gain += (price - oldestTransaction.price) * oldestTransaction.shares;
+
+These two lines subtract the number of shares in the oldest transaction from remainingShares, and then calculate the capital gain (or loss) for those 
+shares. This gain is added to the total gain variable.
+
+} else {
+oldestTransaction.shares -= remainingShares;
+gain += (price - oldestTransaction.price) * remainingShares;
+remainingShares = 0;
+buyQueue.addFirst(oldestTransaction);
+
+These lines sell only some shares in the oldest transaction, and then add the remaining part of the transaction back to the buyQueue. 
+The capital gain (or loss) for the sold shares is calculated and added to the total gain variable. The remainingShares variable is set to 0 because all 
+shares have been sold.
+
+The while loop continues until all the remaining shares have been sold or the buyQueue is empty. At the end of the loop, the total capital gain (or loss) 
+for the entire sequence of transactions is stored in the gain variable.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+if (remainingShares > 0) {
+                    // not enough shares to fulfill the sell order
+                    System.out.println("Not enough shares to sell, transaction cancelled.");
+                } else {
+                    sellQueue.addLast(new Transaction(shares, price));
+                    System.out.printf("Transaction recorded, capital gain: $%.2f%n", gain);
+                    totalGain += gain;
+                }
+            } else if (input.equals("Q")) {
+                double gain = 0.0;
+                while (!buyQueue.isEmpty()) {
+                    Transaction transaction = buyQueue.removeLast();
+                    gain += transaction.price * transaction.shares;
+                }
+                System.out.printf("Total capital gain: $%.2f%n", totalGain);
+                System.out.printf("Remaining items for : $%.2f%n", gain);
+                break;
+            } else {
+                System.out.println("Invalid input, please try again.");
+            }
+            System.out.println();
+        }
+    }
+
+
+if (remainingShares > 0) {
+
+This condition checks if there are any remaining shares that need to be sold. If there are, the program prints a message saying that 
+there aren't enough shares to fulfill the sell order, and the transaction is cancelled. If there aren't any remaining shares, the program adds the 
+transaction to the sell queue.
+
+sellQueue.addLast(new Transaction(shares, price));
+
+This line adds a new transaction to the sell queue, which presumably contains all of the shares that are available for sale. The Transaction class seems 
+to represent a single transaction of buying or selling a certain number of shares at a certain price.
+
+
+System.out.printf("Transaction recorded, capital gain: $%.2f%n", gain);
+
+This line prints a message indicating that the transaction was recorded, along with the capital gain or loss from the transaction. However, the variable 
+gain doesn't seem to be defined anywhere in this code snippet, so it's unclear where it comes from.
+
+totalGain += gain;
+
+This line adds the gain or loss from the current transaction to a running total of the total capital gain or loss for all transactions processed so far.
+
+} else if (input.equals("Q")) {
+
+This condition checks if the user has entered the letter "Q", which presumably stands for "quit" or "exit". If so, the program calculates the total capital 
+gain by iterating over all of the transactions in the buy queue and summing up the gains from each one. The gains are calculated by multiplying the number 
+of shares by the price for each transaction. The program then prints the total capital gain and the remaining items in the buy queue.
+
+
+while (!buyQueue.isEmpty()) {
+
+This line starts a loop that iterates over all of the transactions in the buy queue. The loop continues until the buy queue is empty.
+
+
+Transaction transaction = buyQueue.removeLast();
+
+This line removes the last transaction from the buy queue and assigns it to a variable called transaction.
+
+
+gain += transaction.price * transaction.shares;
+
+This line calculates the gain or loss from the current transaction by multiplying the price by the number of shares, and adds it to the running total gain.
+
+
+System.out.printf("Total capital gain: $%.2f%n", totalGain);
+
+This line prints the total capital gain or loss for all transactions processed so far.
+
+
+break;
+
+This line exits the while loop and ends the program.
+
+} else {
+
+If the user enters any other input besides "S" or "Q", the program prints a message saying that the input is invalid.
+
+System.out.println("Invalid input, please try again.");
+
+This line prints an error message indicating that the user input is invalid.
+
+}
+
+This curly brace ends the if/else block that processes user input.
+
+System.out.println();
+
+This line prints a blank line, presumably for formatting purposes.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+This implementation provides a Deque data structure to keep track of the transactions in the order they occur. Each transaction is represented as an 
+instance of the Transaction class, which has two fields: the number of shares and the price per share.
+
+The Deque provides methods to add transactions to both the front and the back of the deque, as well as to remove transactions from the front and the back 
+of the deque. This allows us to implement the FIFO protocol by removing transactions from the front of the deque when we need to sell shares.
+
+To calculate the capital gain or loss, we need to keep track of the total number of shares bought and the total cost of buying those shares. When we sell 
+shares, we can use the FIFO protocol to identify which shares are sold, and calculate the capital gain or loss based on the selling price and the cost of 
+the shares sold.
+

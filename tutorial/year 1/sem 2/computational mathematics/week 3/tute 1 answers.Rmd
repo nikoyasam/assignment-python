@@ -1,0 +1,137 @@
+---
+title: "maths"
+author: "nikoya"
+date: "2023-02-04"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+```{r}
+library(knitr)
+library(tidyverse)
+
+```
+##Q1
+
+a)Continuous
+b)Continuous
+c)discrete
+d)categorical/Ordinal
+e)categorical/Ordinal
+f)Categorical/ordinal
+g)Discrete
+h)Categorical/Ordinal
+i)Continuous
+j)Categorical/ordinal
+k)Categorical/ordinal
+l)Continuous
+
+
+```{r}
+Position<-c("Labourer","Receptionist","Management Asst 1","Management Asst 2","Junior executive 1","Junior executive 2","Accountant","CEO")
+experience<-c(1,1,1,2,2,3,2,3)
+salary <-c(10000,15000,25000,30000,40000,50000,100000,800000)
+
+employee<-data.frame(Position,salary,experience)
+employee
+view(employee) #TO VIEW THE DATA SET
+
+```
+##Q2a)
+```{r}
+
+salary <-c(10000,15000,25000,30000,40000,50000,100000,800000)
+mean(employee$salary)
+```
+##Q2b)
+The median is better,This data set contains a large range of salaries,And salary 800000 has a large effect on the mean and it has outliers as well
+
+##Q2c)
+```{r}
+weighted.mean(employee$salary, employee$experience)
+
+```
+
+##Q3a)
+```{r}
+summary(employee$salary)
+```
+##Q3b)
+
+```{r}
+library(graphics)
+salary <-c(10000,15000,25000,30000,40000,50000,100000,800000)
+boxplot(salary/1000, horizontal =TRUE, xlab ="Salary(inthousands)")
+
+```
+##Q3c)
+
+```{r}
+data <- c(10000, 15000, 25000, 30000, 40000, 50000, 100000, 800000)
+
+# variance
+variance <- var(data)
+
+# standard deviation
+sd <- sqrt(variance)
+
+# interquartile range (IQR)
+iqr <- IQR(data)
+
+# median absolute deviation (MAD)
+median <- median(data)
+median_abs_deviation <- median(abs(data - median))
+
+# print results
+cat("Variance:", variance, "\n")
+cat("Standard Deviation:", sd, "\n")
+cat("Interquartile Range:", iqr, "\n")
+cat("Median Absolute Deviation from the Median:", median_abs_deviation)
+
+```
+
+##Q4
+```{r}
+set.seed(123) # set seed for reproducibility
+sample_data <- rnorm(100, mean = 50, sd = 10)
+hist(sample_data, breaks = 10, main = "Histogram of Normal Distribution (mean = 50, sd = 10)", xlab = "Values", ylab = "Frequency", col = "blue")
+
+
+
+```
+```{r}
+set.seed(123) # set seed for reproducibility
+sample_data <- rnorm(100, mean = 50, sd = 10)
+
+# Plotting the histogram
+hist(sample_data, breaks = "FD", main = "Density Plot of Normal Distribution (mean = 50, sd = 10)", xlab = "Values", ylab = "Density", col = "blue", border = "white", freq = FALSE)
+
+# Adding the density plot
+lines(density(sample_data), col = "red")
+
+
+```
+```{r}
+set.seed(123) # set seed for reproducibility
+sample_data <- rnorm(100, mean = 50, sd = 10)
+
+# Calculating the percentiles
+p25 <- quantile(sample_data, probs = 0.25)
+p40 <- quantile(sample_data, probs = 0.40)
+p60 <- quantile(sample_data, probs = 0.60)
+p75 <- quantile(sample_data, probs = 0.75)
+
+# Displaying the percentiles
+cat("25th percentile:", p25, "\n")
+cat("40th percentile:", p40, "\n")
+cat("60th percentile:", p60, "\n")
+cat("75th percentile:", p75, "\n")
+
+```
+
+```
+
+
+```
+

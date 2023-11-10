@@ -1,0 +1,94 @@
+---
+title: "R_documentation03"
+author: "Prashan Rathnayaka"
+date: "2022-12-19"
+output: pdf_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+# Boxplot
+```{r}
+boxplot(mtcars$mpg, horizontal = T,xlab="mpg")
+boxplot(mtcars$hp, horizontal = T,xlab="hp")
+```
+# Frequency Tables and Histograms
+```{r}
+#Frequency Tables
+
+df_csv <- read_csv("data/StateData.csv")
+df_csv %>% 
+  group_by(region) %>% 
+  summarise(count=n()) %>% 
+  view()
+
+summary(mtcars$mpg)
+
+breaks <- seq(from=min(mtcars$mpg),to=max(mtcars$mpg), length=11)
+breaks
+pop_freq <- cut(mtcars$mpg, breaks=breaks,right=TRUE, include.lowest = TRUE)
+table(pop_freq) %>% 
+  view()
+
+#Histogram
+hist(mtcars$mpg)
+hist(mtcars$hp)
+```
+# Density Estimates (Density Plot)
+```{r}
+hist(mtcars$mpg, freq =F )
+lines(density(mtcars$mpg), lwd=3, col="red")
+```
+# Mode
+```{r}
+speed_dating <- read_csv("data/SpeedDating.csv")
+#glimpse(speed_dating)
+#Speed dating data with over 8,000 observations of matches and non-matches, with answers to survey questions about how people rate themselves and how they rate others on several dimensions. This is a large and rich data set which might take you some time to fully understand.
+# https://perso.telecom-paristech.fr/eagan/class/igr204/data/SpeedDatingKey.pdf
+
+race_vs_count <- speed_dating %>% 
+  group_by(race_o) %>% 
+  summarise(number_of_people=n())
+
+which.max(race_vs_count$number_of_people)
+race_vs_count[2,]
+```
+# Correlation Coefficient (Pearson’s Correlation Coefficient)
+```{r}
+#The relationship between Miles per gallon and Weight of the car 
+cor(mtcars$mpg,mtcars$wt)
+plot(mtcars$wt,mtcars$mpg)
+
+#Variance Covariance Matrix
+cov(mtcars) %>% 
+  view()
+```
+# Rank Correlation (Spearman’s Correlation)
+```{r}
+student_id <- c(1:10)
+maths <- c(66, 70,	40,	60,	65,	56,	59,	77,	67,	63)
+english <- c(56,	75,	45,	71,	61,	64,	58,	80,	76,	61)
+marks <- data.frame(student_id,maths,english)
+
+cor(maths, english, method = "spearman")
+```
+# Exploring two (or more) variables
+```{r}
+plot(mtcars$mpg, mtcars$wt) #scatter plot
+
+# contingency table
+library(grid)
+library(vcd)
+
+head(Arthritis)
+```
+
+
+```{r}
+library(descr)
+Table <- CrossTable(Arthritis$Treatment, Arthritis$Improved,prop.c=FALSE, prop.chisq=FALSE, prop.t=FALSE)
+Table
+```
+

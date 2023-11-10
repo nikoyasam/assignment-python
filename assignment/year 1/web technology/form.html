@@ -1,0 +1,75 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" type = "text/css" href = "form.css">
+  </head>
+  <body>
+	<div class = "container">
+		<form id="signup-form" class="left-column">
+			<h1>Sign Up Form</h1>
+    
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" required>
+			</div>
+		    <div class="form-group">
+				<label for="age">Age:</label>
+				<input type="number" id="age" name="age" required>
+		    </div>
+		    <div class="form-group">
+				<label for="gender">Gender:</label>
+				<select id="gender" name="gender" required>
+				  <option value="" disabled selected>Select Gender</option>
+				  <option value="male">Male</option>
+				  <option value="female">Female</option>
+				  <option value="other">Other</option>
+				</select>
+			</div>
+		    <div class="form-group">
+				<label for="occupation">Occupation:</label>
+				<input type="text" id="occupation" name="occupation" required>
+		    </div>
+		    <div class="form-group">
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email" required>
+		    </div>
+			<button type="submit">Submit</button>
+    </form>
+
+    <div id = "subpage1" class = "right-column">
+      <h2>Subpage 1</h2>
+      <form id="subpage1-form">
+        <div class="form-group">
+          <label for="physical-activity">Physical Activity:</label>
+          <input type="text" id="physical-activity" name="physical-activity" required>
+        </div>
+        <div class="form-group">
+          <label for="food-intake">Food Intake:</label>
+          <input type="text" id="food-intake" name="food-intake" required>
+        </div>
+        <div class="form-group">
+          <label for="workout-time">Time of Workouts:</label>
+          <input type="text" id="workout-time" name="workout-time" required>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      
+
+      <script>
+        const form = document.querySelector('#signup-form');
+        const subpage1 = document.querySelector('#subpage1');
+        const subpage1Form = document.querySelector("#subpage1-form");
+
+        form.addEventListener("submit", e => {
+          e.preventDefault();
+          subpage1.style.display = "block";
+          form.style.display = "none";
+        });
+
+        subpage1Form.addEventListener("submit", e => {
+          e.preventDefault();
+          alert("Sign Up Successful!");
+        });
+      </script>
+  </body>
+</html>

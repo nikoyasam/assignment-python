@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      form {
+        width: 70%;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin: 1rem 0;
+      }
+
+      label {
+        display: block;
+      }
+
+      input, select, textarea {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1rem;
+      }
+
+      button[type="submit"] {
+        width: 50%;
+        padding: 0.5rem;
+        background-color: blue;
+        color: white;
+        font-size: 1rem;
+        
+      }
+
+      #subpage1 {
+        display: none;
+      }
+      h1{
+        text-align:center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sign Up Form</h1>
+    <form id="signup-form">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="" disabled selected>Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="subpage1">
+      <h2>Subpage 1</h2>
+      <form id="subpage1-form">
+        <div class="form-group">
+          <label for="physical-activity">Physical Activity:</label>
+          <input type="text" id="physical-activity" name="physical-activity" required>
+        </div>
+        <div class="form-group">
+          <label for="food-intake">Food Intake:</label>
+          <input type="text" id="food-intake" name="food-intake" required>
+        </div>
+        <div class="form-group">
+          <label for="workout-time">Time of Workouts:</label>
+          <input type="text" id="workout-time" name="workout-time" required>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      const form = document.querySelector('#signup-form');
+      const subpage1 = document.querySelector('#subpage1');
+      const subpage1Form = document.querySelector("#subpage1-form");
+
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        subpage1.style.display = "block";
+        form.style.display = "none";
+      });
+
+      subpage1Form.addEventListener("submit", e => {
+        e.preventDefault();
+        alert("Sign Up Successful!");
+      });
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MyfitnessPal Sign Up Form</title>
+    <style>
+      /* Add styles for the form */
+      form {
+        width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+      }
+      /* Add styles for the input fields */
+      input[type="text"],
+      input[type="email"],
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      /* Add styles for the submit button */
+      input[type="submit"] {
+        width: 60%;
+        padding: 10px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+      }
+      /* Add styles for the error messages */
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="signup-form">
+      <h1>MyfitnessPal Sign Up Form</h1>
+      <!-- Subpage 1: Personal Information -->
+      <h2>Subpage 1: Personal Information</h2>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" required>
+      </div>
+      <div>
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div>
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation" required>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <!-- Subpage 2: Workout Information -->
+      <h2>Subpage 2: Workout Information</h2>
+      <div>
+        <label for="physical-activities">Physical Activities:</label>
+        <select id="physical-activities" name="physical-activities" required>
+          <option value="">Select Physical Activity</option>
+          <option value="running">Running</option>
+          <option value="swimming">Swimming</option>
+          <option value="weightlifting">Weightlifting</option>
+        </select
+    </div>
+    <div>
+      <label for="food-intake">Food Intake Type:</label>
+      <select id="food-intake" name="food-intake" required>
+        <option value="">Select Food Intake Type</option>
+        <option value="balanced">Balanced</option>
+        <option value="low-carb">Low-Carb</option>
+        <option value="high-protein">High-Protein</option>
+      </select>
+    </div>
+    <div>
+      <label for="workout-time">Time of Workouts:</label>
+      <input type="text" id="workout-time" name="workout-time" required>
+    </div>
+    <input type="submit" value="Submit">
+  </form>
+  <div id="message" style="display: none;"></div>
+  <script>
+    // Add JavaScript for form validation
+    const form = document.getElementById("signup-form");
+    const message = document.getElementById("message");
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      let name = document.getElementById("name").value;
+      let age = document.getElementById("age").value;
+      let gender = document.getElementById("gender").value;
+      let occupation = document.getElementById("occupation").value;
+      let email = document.getElementById("email").value;
+      let physicalActivities = document.getElementById("physical-activities")
+        .value;
+      let foodIntake = document.getElementById("food-intake").value;
+      let workoutTime = document.getElementById("workout-time").value;
+      let error = "";
+      if (!name) {
+        error += "Name is required.\n";
+      }
+      if (!age) {
+        error += "Age is required.\n";
+      }
+      if (!gender) {
+        error += "Gender is required.\n";
+      }
+      if (!occupation) {
+        error += "Occupation is required.\n";
+      }
+      if (!email) {
+        error += "Email is required.\n";
+      }
+      if (!physicalActivities) {
+        error += "Physical Activity is required.\n";
+      }
+      if (!foodIntake) {
+        error += "Food Intake Type is required.\n";
+      }
+      if (!workoutTime) {
+        error += "Time of Workout is required.\n";
+      }
+      if (error) {
+        message.style.display = "block";
+        message.innerHTML = error;
+      } else {
+        message.style.display = "none";
+        window.open(
+          "success.html",
+          "Success",
+          "width=300, height=200, top=200, left=400"
+        );
+      }
+    });
+  </script>
+</body>
+</html>
+
+    
+
+

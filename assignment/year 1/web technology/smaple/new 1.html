@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MyfitnessPal</title>
+    <link rel="stylesheet" href="cww.css">
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Enter your details:</h2>
+      <form onsubmit="return validateForm()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+		<div class="form-group">
+	  <label for="occupation">Occupation:</label>
+	  <input type="text" id="occupation" name="occupation" required>
+	</div>
+	<div class="form-group">
+	  <label for="email">Email:</label>
+	  <input type="email" id="email" name="email" required>
+	</div>
+	<div class="form-group">
+	  <label for="Physical Activities">Physical Activities:</label>
+	  <input type="text" id="Physical Activities" name="Physical Activities" required>
+	</div>
+	<div class="form-group">
+	  <label for="Food intake type">Food intake type:</label>
+	  <input type="text" id="Food intake type" name="Food intake type" required>
+	</div>
+	<div class="form-group">
+	  <label for="time of the day">time of the day:</label>
+	  <input type="text" id="time of the day" name="time of the day" required>
+	</div>
+	<input type="submit" value="Submit">
+	</form>
+	</div>
+	</body>
+	<script>
+	  function validateForm() {
+		let name = document.getElementById("name").value;
+		let age = document.getElementById("age").value;
+		let gender = document.getElementById("gender").value;
+		let occupation = document.getElementById("occupation").value;
+		let email = document.getElementById("email").value;
+		let Physical Activities = document.getElementById("Physical Activities").value;
+		let Food intake type = document.getElementById("Food intake type").value;
+		let time of the day = document.getElementById("time of the day").value;
+
+		if (
+		  name === "" ||
+		  age === "" ||
+		  gender === "" ||
+		  occupation === "" ||
+		  email === "" ||
+		  preference1 === "" ||
+		  preference2 === "" ||
+		  preference3 === ""
+		) {
+		  alert("All fields are compulsory");
+		  return false;
+		} else {
+		  alert(
+			`Dear ${name}, Thank you for using MyfitnessPal, The results will be shown in a while.`
+		  );
+		  return false;
+		}
+	  }
+	</script>
+</html>

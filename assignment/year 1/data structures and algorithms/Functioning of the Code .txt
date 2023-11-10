@@ -1,0 +1,31 @@
+Functioning of the Code :
+
+This is a Java program that simulates a capital gain calculator that processes a sequence of buy and sell transactions and calculates the total capital gain for the user. The program prompts the user to enter a command (B for buying, S for selling, or Q for quitting), and then prompts the user for additional input depending on the command.
+
+The program uses a Deque (double-ended queue) data structure to keep track of the buy and sell transactions. The Deque is implemented using a linked list, with each node in the list representing a single transaction. The Deque has a maximum size of 100.
+
+The Transaction class is a private nested class that represents a single buy or sell transaction. Each transaction has two fields: the number of shares and the unit price.
+
+The main method of the program starts by creating two empty Deques, one for the buy transactions and one for the sell transactions, and then enters a loop that prompts the user for a command and processes the input until the user chooses to quit by entering the Q command.
+
+When the user enters a B command, the program prompts the user for the number of shares and the unit price, creates a new Transaction object with this information, and adds it to the buy Deque.
+
+When the user enters an S command, the program prompts the user for the number of shares and the unit price, calculates the capital gain by comparing the sell price to the oldest buy price and sell shares until the sell order is fulfilled. Then, the program creates a new Transaction object with this information, adds it to the sell Deque, and updates the total capital gain.
+
+When the user enters a Q command, the program sells all remaining shares in the buy Deque and prints the total capital gain and remaining items (shares) in the buy Deque.
+
+The Deque class is implemented as a nested public class with generic type T. The Deque has three fields: a Node object representing the head of the Deque, a Node object representing the tail of the Deque, and an integer representing the size of the Deque. The Node class is a private nested class that represents a single node in the linked list. Each Node object has a reference to its data, its previous Node object, and its next Node object.
+
+The Deque class has several methods for adding and removing items from the Deque, including addFirst, addLast, removeFirst, and removeLast. These methods all update the head, tail, and size fields of the Deque as needed. The Deque class also has several methods for checking the size and emptiness of the Deque, including isEmpty and size.
+
+
+why has a dequeue been used and not a queue or stack?
+
+The use of a deque (Double Ended Queue) in this code makes sense as it needs to support the insertion and removal of elements at both ends of the queue.
+
+A regular queue would only allow elements to be inserted at the rear and removed from the front, which does not support the functionality required in this program.
+
+A stack, on the other hand, allows only insertion and removal of elements from one end (top of the stack), but it does not meet the requirements of the program since the program needs to remove items from both the front and rear ends of the deque.
+
+Therefore, a deque is chosen for this program since it allows for elements to be inserted and removed from both ends.
+

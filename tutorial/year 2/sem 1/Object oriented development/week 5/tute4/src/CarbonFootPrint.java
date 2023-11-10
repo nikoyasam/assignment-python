@@ -1,0 +1,3 @@
+interface CarbonFootPrint {
+    double getCarbonFootPrint();
+}

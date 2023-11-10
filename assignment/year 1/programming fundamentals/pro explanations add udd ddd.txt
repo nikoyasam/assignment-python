@@ -1,0 +1,422 @@
+
+Driver class
+package com.Models;
+
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableValue;
+import java.util.Locale;
+
+public class Driver {  //objects in the Driver class
+    private String name;
+    private int age;
+    private String team;
+    private String car;
+    private int points;
+
+    private boolean selected = false; //indicate whether the driver is selected or not.
+
+    public Driver(String name, int age, String team, String car, int points) {
+        this.name = name;
+        this.age = age;
+        this.team = team;
+        this.car = car;
+        this.points = points;
+    }
+    // return the values of the respective instance variables.
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getTeam() {
+        return team;
+    }
+
+    public String getCar() {
+        return car;
+    }
+    public int getPoints() {
+        return points;
+    }
+
+    //set the values of the respective instance variables.
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
+    }
+
+    public void setCar(String car) {
+        this.car = car;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    @Override
+    public String toString() { //method returns a string representation of the Driver object.
+        return "Driver{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", team='" + team + '\'' +
+                ", car='" + car + '\'' +
+                ", points=" + points +
+                '}';
+    }
+
+    public String toCsvString() {
+        return String.format(Locale.US, "%s,%d,%s,%s,%d", name, age, team, car, points);
+    }
+    //returns a comma-separated string representation of the Driver object, which can be used to
+    // write the object to a CSV file.
+    public static Driver fromCsvString(String csvString) { //takes a comma-separated string
+        // representation of a Driver object and returns a new Driver object with the same property
+        // values.
+
+        String[] fields = csvString.split(",");
+        String name = fields[0];
+        int age = Integer.parseInt(fields[1]);
+        String team = fields[2];
+        String car = fields[3];
+        int points = Integer.parseInt(fields[4]);
+        return new Driver(name, age, team, car, points);
+    }
+
+    public ObservableValue<Boolean> selectedProperty() {
+        return new SimpleBooleanProperty(selected);
+    }
+    //represents the selected variable, which can be observed and bound to user interface elements
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+OOP CONCEPTS
+
+Encapsulation: The instance variables in the Driver class are encapsulated by using private access modifiers, and public getter and setter methods are 
+provided to access and modify them.
+
+Abstraction: The Driver class represents the abstraction of a real-world entity, and provides a set of public methods to interact with it,
+ without revealing its internal implementation details.
+
+Access Modifiers: Access modifiers such as public and private are used to control the visibility and accessibility of the class members.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+NewDriverController
+
+package com.Controllers;
+
+import com.Models.Driver;
+import com.Utilities.Constants;
+import com.Utilities.DriversManager;
+import com.Utilities.Messages;
+import com.Utilities.Resources;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+public class NewDriverController {
+    public Button cancelButton;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField ageField;
+    @FXML
+    private TextField teamField;
+
+    @FXML
+    private TextField carField;
+
+
+    @FXML
+    private Button saveButton;
+
+    private DriversController driversController;
+    private Driver selectedDriver;  //driver object user has selected
+    private boolean isUpdate; //boolean flag indicating whether the user is updating an existing
+    // driver or creating a new one.
+
+    public void initialize() {
+        TextFormatter<String> numericOnlyFormatter = new TextFormatter<>(change -> change.getControlNewText().matches("\\d*") ? change : null);
+        ageField.setTextFormatter(numericOnlyFormatter);
+        //"TextFormatter" object that only allows numeric characters in the age field.
+    }
+
+    @FXML
+    public void onSaveButtonClicked(ActionEvent actionEvent) throws IOException {
+        //gets the text that the user entered into the nameField, ageField, teamField, and carField text fields
+        String name = nameField.getText();
+        int age = 0;
+        try { age = Integer.parseInt(ageField.getText()); } catch (Exception e) { e.printStackTrace(); }
+        //parse the age field as an integer
+        String team = teamField.getText();
+        String car = carField.getText();
+
+        if (name.equals("")) {   //validates name
+            Messages.error("Invalid Name", "Please enter a valid name!");
+            return;
+        }
+
+        if (team.equals("")) {  //validates team
+            Messages.error("Invalid Team", "Please enter a valid team name!");
+            return;
+        }
+
+        if (car.equals("")) {   //validates car
+            Messages.error("Invalid Car", "Please enter a valid car name!");
+            return;
+        }
+
+        if (age < 20) {    //validates age
+            Messages.error("Invalid Age", "Please enter an age greater than or equal to 20!");
+            return;
+        }
+
+        Driver newDriver = new Driver(name, age, team, car, isUpdate ? selectedDriver.getPoints() : 20);
+        //all the fields are valid, a new Driver object is created with the entered information.
+        if (isUpdate) DriversManager.updateDriver(selectedDriver, newDriver);
+        else DriversManager.addDriver(newDriver);
+        Messages.information("Success", "Driver saved successfully!");
+
+        nameField.setText("");
+        ageField.setText("");
+        teamField.setText("");
+        carField.setText("");
+        onCancel(actionEvent);
+    }
+
+    public void setDriver(Driver driver) {
+        nameField.setText(driver.getName()); //sets the value of the name field to the driver's name using the setName() method.
+        ageField.setText(driver.getAge() + "");//: sets the value of the age field to the driver's age
+        // using the setAge() method. Since the setText() method accepts only
+        teamField.setText(driver.getTeam()); // sets the value of the team field to the driver's team
+        // using the setTeam() method.
+        carField.setText(driver.getCar());
+        this.isUpdate = true;  //user is updating an existing driver.
+        this.selectedDriver = driver;
+    }
+
+    public void onCancel(ActionEvent actionEvent) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        FXMLLoader loader = Resources.getScreen("home.fxml"); //loads the home.fxml file
+        // using the Resources class
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e); //if an exception occurs while loading the fxml file,
+            // a runtime exception is thrown.
+        }
+        HomeController homeController = loader.getController();
+        stage.setScene(scene);
+        stage.show();
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Encapsulation: The fields of the NewDriverController class (such as nameField, ageField, and teamField) are marked as private to ensure that 
+they cannot be accessed directly from outside the class. Instead, public methods (such as setDriver and onSaveButtonClicked) are provided for other 
+classes to interact with the NewDriverController object.
+
+Inheritance: The NewDriverController class inherits from the Object class implicitly.
+
+Polymorphism: The NewDriverController class implements the initialize method, which is a callback method that is invoked by the JavaFX framework when the 
+FXML file is loaded. The onSaveButtonClicked and onCancel methods are also callback methods that are invoked when the user clicks the corresponding buttons
+ in the GUI.
+
+Abstraction: managing driver objects in the GUI. It hides the details of how drivers are added, updated, or deleted from the user interface
+
+Dependency Injection: The NewDriverController class depends on several other classes, such as Driver, Constants, DriversManager, Messages, and Resources. 
+These dependencies are injected into the NewDriverController class either through constructor injection or setter injection.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Drivers controller
+
+package com.Controllers;
+
+import com.Models.Driver;
+import com.Utilities.Constants;
+import com.Utilities.DriversManager;
+import com.Utilities.Messages;
+import com.Utilities.Resources;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import java.io.IOException;
+
+public class DriversController {
+    public Button newDriverBtn;
+    private ObservableList<Driver> drivers = FXCollections.observableArrayList();
+    @FXML
+    public Button searchBtn;
+    @FXML
+    public TextField searchField;
+    @FXML
+    private TableView<Driver> driversTable;  //Drivers table
+
+    public void loadTable() {
+        driversTable.setItems(DriversManager.retrieveAllDrivers());
+    }
+    //loads the drivers in the drivers table using the drivers manager class retreiveAllDrivers
+
+    public void initialize() {
+        driversTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        // It sets the column resize policy for the driversTable TableView to CONSTRAINED_RESIZE_POLICY,
+        // which means that columns will be resized to fill the available width of the table.
+        loadTable();  //loads the table with data
+
+        TableColumn<Driver, Void> deleteColumn = new TableColumn<>("Delete");
+        deleteColumn.setCellFactory(param -> new TableCell<Driver, Void>() {  //each cell says delete in the column
+            private final Button deleteButton = new Button("Delete");
+
+            {
+                deleteButton.setOnAction(event -> {
+                    //when the button is clicked
+                    Driver driver = getTableView().getItems().get(getIndex());
+                    //The handler retrieves the driver object associated with the clicked cell
+                    boolean result = Messages.confirmation("Confirm Deletion",
+                            "Are you sure you want to delete this item?");
+                    if (result) {
+                        DriversManager.removeDriver(driver); //removes the driver from the system
+                        loadTable();
+                    }
+                });
+                deleteButton.prefWidthProperty().bind(deleteColumn.widthProperty());
+                deleteButton.setAlignment(Pos.CENTER);
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(deleteButton);
+                }
+            }
+        });
+        deleteColumn.setStyle("-fx-alignment: CENTER;");
+
+        TableColumn<Driver, Void> updateColumn = new TableColumn<>("Update");
+        // creates a new column in the table with the header text "Update".
+        updateColumn.setCellFactory(param -> new TableCell<Driver, Void>() {
+            //creates custom cells with update button for each row
+            private final Button updateButton = new Button("Update");
+
+            {
+                updateButton.setOnAction(event -> {  //action on click
+                    Driver driver = getTableView().getItems().get(getIndex());
+                    // create a new screen and pass the selected race object to its constructor
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    //gets the stage of the current window to use for displaying the update screen.
+                    FXMLLoader loader = Resources.getScreen("new-driver.fxml");//loads an fxml file to update the screen
+                    Scene scene = null;
+                    try {
+                        scene = new Scene(loader.load());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    NewDriverController controller = loader.getController(); //gets the controller for the update screen.
+                    controller.setDriver(driver);// sets the selected driver in the update screen controller.
+                    stage.setScene(scene); //sets the scene for the update screen on the current stage.
+                    stage.show();
+                });
+                updateButton.prefWidthProperty().bind(updateColumn.widthProperty());
+                updateButton.setAlignment(Pos.CENTER);
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) { //method to set the graphic for the cell
+                super.updateItem(item, empty); // calls the superclass method for updating the item.
+
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(updateButton);
+                }
+            }
+        });
+        updateColumn.setStyle("-fx-alignment: CENTER;");
+
+        // add the delete and update columns to the table view
+        driversTable.getColumns().addAll(updateColumn, deleteColumn);
+    }
+
+    public void onSearch(ActionEvent actionEvent) {
+        String searchText = searchField.getText().toLowerCase(); //lower case for easy comparison
+        if (searchText.isEmpty()) driversTable.setItems(DriversManager.retrieveAllDrivers());
+        //If the search field is empty, display all the available drivers in a table. driversTable
+        else driversTable.setItems(DriversManager.searchDrivers(searchText));
+    }
+
+    public void onDelete(ActionEvent actionEvent) { //to click delete
+    }
+
+    public void onUpdate(ActionEvent actionEvent) { //to click update
+    }
+
+    public void onNewDriverClick(ActionEvent actionEvent) {
+        // create a new screen and pass the selected race object to its constructor
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        FXMLLoader loader = Resources.getScreen("new-driver.fxml");
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        NewDriverController controller = loader.getController();
+//        controller.setDriver();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void onRefresh(ActionEvent actionEvent) {
+        searchField.setText(""); //Clear the search field.
+        driversTable.setItems(DriversManager.retrieveAllDrivers());
+    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Encapsulation: The class DriversController encapsulates the logic for handling and managing drivers
+
+Polymorphism: The DriversController class overrides the initialize() method of the Controller class to customize the size of the table
+
+Abstraction: The DriversController class defines several methods that abstract away the details of how the data is managed 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 

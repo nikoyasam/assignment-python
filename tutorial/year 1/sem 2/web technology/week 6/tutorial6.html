@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <script>
+        function display_intro() {
+            alert("You are in the Kingdom of Dinosaurs. In front of you, you see two caves. In one cave, the dragon is friendly and will share his treasure with you. The other dragon is hungry and will eat you on sight.");
+        }
+        function choose_cave() {
+            let cave;
+            do {
+                cave = prompt("Which cave will you enter? (1 or 2)");
+            } while (cave !== "1" && cave !== "2");
+            return cave;
+        }
+
+
+        function check_cave(choose_cave){
+            alert("You approach the cave");
+            alert("A large dragon jumps out in front of you!") ;
+            alert("He opens his jaws and...");
+            const friendlyCave = Math.floor(Math.random()*2 + 1);
+            if(chosen_cave==friendlyCave.toString()){
+                alert("Gives you his treasure!");
+            }else{
+                alert("Gobbles you down!");
+               
+            }
+                
+        }
+        display_intro();
+        let chosen_cave = choose_cave();
+        alert(chosen_cave);
+        check_cave(chosen_cave);
+
+    
+    
+   
+    </script>
+</head>
+<body>
+    <script>
+        do {
+        display_intro();
+        const cave_number = choose_cave();
+        check_cave(cave_number);
+        let play_again = (prompt("Do you want to play again? (Y/N)").toLowerCase() === "y");
+        }while(play_again=='Y'|| play_again=='y');
+
+    </script>
+
+
+</body>
+</html>

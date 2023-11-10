@@ -1,0 +1,14 @@
+hello 
+hi
+donkey
+monkey
+mago
+apple
+pineapple
+kiwi
+tiger
+lion
+gorilla
+banana
+watermelon
+grape

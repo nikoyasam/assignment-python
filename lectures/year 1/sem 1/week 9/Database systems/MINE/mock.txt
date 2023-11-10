@@ -1,0 +1,20 @@
+mockpaper
+
+SELECT title 
+FROM book
+WHERE publishedyear = '2019'
+
+
+2)
+SELECT title 
+FROM book as B
+JOIN Publisher as P
+ON B.publisher = P.publisher
+WHERE P.city = 'Newyork city'
+
+3)
+SELECT publisher 
+FROM book as B
+JOIN Publisher as P
+ON B.publisher = P.publisher
+

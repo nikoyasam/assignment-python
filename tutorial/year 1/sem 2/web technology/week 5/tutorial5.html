@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Math Game</title>
+	<style>
+		.correct {
+			color: green;
+			font-weight: bold;
+		}
+
+		.incorrect {
+			color: red;
+			font-weight: bold;
+			font-style: italic;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		// Define an array of math questions
+		var questions = [
+			"What is 7 x 9?",
+			"What is 15 + 8?",
+			"What is 27 - 12?",
+			"What is 14 x 3?",
+			"What is 40 - 22?"
+		];
+
+		// Define an array of correct answers
+		var answers = [63, 23, 15, 42, 18];
+
+		// Define a variable to keep track of the user's score
+		var score = 0;
+
+		// Loop through each question and prompt the user for an answer
+		for (var i = 0; i < questions.length; i++) {
+			var userAnswer = prompt(questions[i]);
+			if (userAnswer == answers[i]) {
+				document.write("<p class='correct'>Your answer to question " + (i+1) + " is correct</p>");
+				score++;
+			} else {
+				document.write("<p class='incorrect'>Your answer to question " + (i+1) + " is incorrect. The correct answer is " + answers[i] + "</p>");
+			}
+		}
+
+		// Display the user's score
+		document.write("<p>You got " + score + " out of " + questions.length + " questions correct.</p>");
+	</script>
+</body>
+</html>

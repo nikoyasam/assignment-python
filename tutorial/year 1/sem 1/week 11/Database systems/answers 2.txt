@@ -1,0 +1,58 @@
+1)
+SELECT d.department_name, l.city, l.country
+FROM departments AS d
+JOIN locations AS l
+ON d.location_id = l.location_id
+WHERE l.city = 'Cambridge';
+
+2)
+SELECT d.department_name, e.first_name,e.last_name,e.salary
+FROM departments AS d
+JOIN employees AS e
+ON d.department_id = e.department_id
+WHERE e.salary > 45000 AND d.department_name LIKE 'M%';
+
+3)   
+SELECT e.last_name, e.salary, j.job_title, d.department_name
+FROM employees AS e
+JOIN jobs AS j
+ON e.job_id = j.job_id
+JOIN departments AS d
+ON e.department_id = d.department_id
+WHERE d.department_name = 'IT';
+
+4)
+SELECT e.first_name,e.last_name,e.salary,j.job_title,d.department_name,l.city,l.country
+FROM employees AS e
+JOIN jobs AS j
+ON e.job_id = j.job_id
+JOIN departments as d
+ON e.department_id = d.department_id
+JOIN locations AS l
+ON d.location_id = l.location_id;
+
+5)
+SELECT d.department_name, e.first_name, e.last_name, e.hire_date, e.salary
+FROM departments AS d
+LEFT OUTER JOIN employees AS e
+ON d.department_id = e.department_id;
+
+
+6)
+SELECT e.first_name, e.last_name, e.hire_date, e.salary, d.department_name
+FROM departments AS d
+RIGHT JOIN employees AS e
+ON e.department_id = d.department_id;
+
+
+using full outer join
+
+SELECT E.first_name, E.last_name, E.hire_date, E.salary, D.department_name
+FROM departments AS D
+LEFT JOIN employees AS E
+ON E.department_id = D.department_id
+UNION
+SELECT E.first_name, E.last_name, E.hire_date, E.salary, D.department_name
+FROM departments AS d
+RIGHT JOIN employees AS e
+ON E.department_id = d.department_id;
